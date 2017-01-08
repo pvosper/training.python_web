@@ -21,13 +21,11 @@ But First
 .. rst-class:: left
 .. container::
 
-    These course materials were created by Cris Ewing
-
     Class presentations are available online for your use
 
     .. rst-class:: small
 
-    https://github.com/christyheaton/training.python_web
+    https://github.com/UWPCE-PythonCert/training.python_web
 
     .. rst-class:: build
     .. container::
@@ -46,45 +44,9 @@ But First
 
 The rendered documentation is available as well:
 
-https://christyheaton.github.io/training.python_web/html/index.html
+http://uwpce-pythoncert.github.io
 
-Please check frequently, updates will be made along the way.
-
-.. nextslide::
-
-You should be signed up for:
-
-**Our Slack Channel:** https://python2016fall.slack.com/messages/general/
-
-This is where you should ask almost all your questions.
-
-**Our Google Group:** https://groups.google.com/forum/#!forum/programming-in-python
-
-We'll post logistical things here.
-
-
-For more private matters you can email us.
-
-.. nextslide::
-
-**Office Hours:**
-
-Posted in the Google Group - typically Saturday and Sunday at a coffee shop
-
-Saturday Jan 14:
-
-Sunday Jan 15: Christy - A Muddy Cup in Wallingford 2:00pm - 3:30pm
-
-.. nextslide::
-
-**Assignments:**
-
-Discussed at the end of class
-
-
-**Lightning Talks:**
-
-Teach us something! I'll assign them in advance - any volunteers to go first?
+Please check frequently. I will update with great regularity
 
 .. nextslide::
 
@@ -124,98 +86,9 @@ Teach us something! I'll assign them in advance - any volunteers to go first?
 
 .. nextslide::
 
-**Classroom Protocol**
-
-.. rst-class:: build
-.. container::
-
-   Tips from the Sasha Laundy PyCon Talk:
-
-   https://www.youtube.com/watch?v=hY14Er6JX2s
-
-    .. rst-class:: build
-
-    * **Asking for help:**
-    * Ask Early/15 minute rule
-    * Be clear, concise, and confident with your questions
-    * 30% Feedback
-    * Say what you've already tried
-
-.. nextslide::
-
-**Classroom Protocol**
-
-.. rst-class:: build
-.. container::
-
-   Tips from the Sasha Laundy PyCon Talk:
-
-   https://www.youtube.com/watch?v=hY14Er6JX2s
-
-   .. rst-class:: build
-
-    * **Getting help:**
-    * Reward question asking
-    * Make them feel good
-    * Share the how and the why
-    * Ask before taking the wheel
-    * Language (easy, just, obviously)
-
-.. nextslide::
-
-**Introductions**
-
-.. rst-class:: build
-.. container::
-
-    Tell us about you:
-
-    .. rst-class:: build
-
-    * Introduce yourself
-    * Interest in the course
-    * Experience with programming/Python
-    * Something interesting about you
-
-.. nextslide::
-
-**Python**
-
-.. rst-class:: build
-.. container::
-
-  This course assumes you have taken Intro to Python
-
-  .. rst-class:: build
-
-    * Have and know how to use cPython version 3.5
-    * IPython
-    * Variables
-    * Loops
-    * Functions and classes
-    * Testing
-
-.. nextslide::
-
 .. rst-class:: large center
 
-Okay, let's get started!
-
-
-The Internet
-------
-
-.. figure:: /_static/SubmarineCableMap.PNG
-    :align: left
-
-    http://www.submarinecablemap.com/
-
-.. nextslide::
-
-.. figure:: /_static/theinternet.png
-    :align: left
-
-    http://www.opte.org/the-internet/
+Introductions
 
 
 TCP/IP
