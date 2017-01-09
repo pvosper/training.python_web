@@ -21,6 +21,6 @@ var SLIDE_CONFIG = {
   },
 
   // Author information
-  presenters: [{"www": "http://christyheaton.github.io", "twitter": "@christytoes", "company": "University of Washington", "github": "http://github.com/christyheaton", "name": "Christy Heaton"}]
+  presenters: [{"github": "http://github.com/christyheaton", "twitter": "@christytoes", "name": "Christy Heaton", "company": "University of Washington", "www": "http://christyheaton.github.io"}]
   
 };
