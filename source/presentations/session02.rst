@@ -520,17 +520,17 @@ We'll need to set up a client to speak to the email account.
 
         In [4]: conn = imaplib.IMAP4_SSL('imap.gmail.com')
           22:40.32 imaplib version 2.58
-          22:40.32 new IMAP4 connection, tag=b'IMKC'
-          22:40.38 < b'* OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN] Dovecot ready.'
-          22:40.38 > b'IMKC0 CAPABILITY'
-          22:40.45 < b'* CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN'
-          22:40.45 < b'IMKC0 OK Capability completed.'
-          22:40.45 CAPABILITIES: ('IMAP4REV1', 'LITERAL+', 'SASL-IR', 'LOGIN-REFERRALS', 'ID', 'ENABLE', 'IDLE', 'AUTH=PLAIN')
-        In [5]: conn.login('crisewing_demobox', 's00p3rs3cr3t')
-          22:59.92 > b'IMKC1 LOGIN crisewing_demobox "s00p3rs3cr3t"'
-          23:01.79 < b'* CAPABILITY IMAP4rev1 SASL-IR SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE CHILDREN NAMESPACE LOGIN-REFERRALS STARTTLS AUTH=PLAIN'
-          23:01.79 < b'IMKC1 OK Logged in.'
-        Out[5]: ('OK', [b'Logged in.'])
+          22:40.32 new IMAP4 connection, tag=b'KIFF'
+          22:40.38 < b'* OK Gimap ready for requests from 206.169.229.66 d125mb177612104oig'
+          22:40.38 > b'KIIF0 CAPABILITY'
+          22:40.45 < b'* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH'
+          22:40.45 < b'KIIF0 OK Thats all she wrote! d125mb177612104oig'
+          22:40.45 CAPABILITIES: ('IMAP4REV1', 'UNSELECT', 'IDLE', 'NAMESPACE', 'QUOTA', 'ID', 'XLIST', 'CHILDREN', 'X-GM-EXT-1', 'XYZZY', 'SASL-IR', 'AUTH=XOAUTH2', 'AUTH=PLAIN', 'AUTH=PLAIN-CLIENTTOKEN', 'AUTH=OAUTHBEARER', 'AUTH=XOAUTH')
+        In [5]: conn.login('internetpython123@gmail.com', '123internet')
+          22:59.92 > b'KIIF1 LOGIN internetpython123@gmail.com "123internet"'
+          23:01.79 < b'* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584'
+          23:01.79 < b'KIIF1 ok internetpython123@gmail.com authenticated (Success)'])
+        Out[5]: ('OK', [b'internetpython123@gmail.com authenticated (Success)'])
 
 .. nextslide::
 
