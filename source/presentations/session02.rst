@@ -22,7 +22,7 @@ The Languages Computers Speak
 
     *Protocols* are the languages that computers speak to each-other.
 
-    This sesson we'll look at a few of them and
+    This session we'll look at a few of them and
 
     .. rst-class:: build
 
@@ -35,9 +35,89 @@ The Languages Computers Speak
 But First
 ----------
 
+.. rst-class:: build left
+.. container::
+
+  Agenda:
+
+  .. rst-class:: build
+
+  * Review of last week
+  * Everyone have what they need (working Python, google group, Slack?)
+  * Questions on last week's material
+  * Go over homework
+  * Intro to Protocols
+  * Break
+  * Lightning Talks (Paul Casey, Thomas Johnson, David Tobey)
+  * Writing HTTP
+  * Homework and plan for next week
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Review
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+Requirements to pass the course
+
+    .. rst-class:: build
+
+    * Attend >= 8 sessions
+    * Show us your Django app at the end of the course
+    * 1 Lightning Talk
+
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+Not required by encouraged
+
+    .. rst-class:: build
+
+    * Weekly homework
+    * Class participation
+    * Help classmates in the Slack channel
+
+
+.. nextslide::
+
 .. rst-class:: large centered
 
 Questions from last week's material
+
+.. nextslide::
+
+.. figure:: /_static/socket_docs.PNG
+    :align: center
+    :width: 80%
+
+    Socket Docs: https://docs.python.org/3.5/library/socket.html#socket.getdefaulttimeout
+
+
+.. nextslide:: Side note on default parameters
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: ipython
+
+        In [1]: def hello(text="hello"):
+           ....:     """returns the text, which is 'hello' by default"""
+           ....:     return text
+           ....:
+        In [2]: hello()
+        Out [2]: 'hello'
+
+        In [3]: hello('hi')
+        Out [3]: 'hi'
 
 
 .. nextslide:: A quick utility method
@@ -83,7 +163,14 @@ Another way to write this:
 
 .. rst-class:: large centered
 
-Examples of an echo server using ``select``
+Let's go over the homework
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+On to Protocol!
 
 
 What is a Protocol?
@@ -496,14 +583,14 @@ I've created a temporary gmail account for us to use.
     :align: center
     :width: 70%
 
- 
+
 .. nextslide::
 
 .. figure:: /_static/lesssecureaccess.PNG
     :align: center
     :width: 70%
 
- 
+
 .. nextslide::
 
 We'll need to set up a client to speak to the email account.
@@ -523,12 +610,15 @@ We'll need to set up a client to speak to the email account.
           22:40.32 new IMAP4 connection, tag=b'KIFF'
           22:40.38 < b'* OK Gimap ready for requests from 206.169.229.66 d125mb177612104oig'
           22:40.38 > b'KIIF0 CAPABILITY'
-          22:40.45 < b'* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH'
+          22:40.45 < b'* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN
+          X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH'
           22:40.45 < b'KIIF0 OK Thats all she wrote! d125mb177612104oig'
-          22:40.45 CAPABILITIES: ('IMAP4REV1', 'UNSELECT', 'IDLE', 'NAMESPACE', 'QUOTA', 'ID', 'XLIST', 'CHILDREN', 'X-GM-EXT-1', 'XYZZY', 'SASL-IR', 'AUTH=XOAUTH2', 'AUTH=PLAIN', 'AUTH=PLAIN-CLIENTTOKEN', 'AUTH=OAUTHBEARER', 'AUTH=XOAUTH')
+          22:40.45 CAPABILITIES: ('IMAP4REV1', 'UNSELECT', 'IDLE', 'NAMESPACE', 'QUOTA', 'ID',
+          'XLIST', 'CHILDREN', 'X-GM-EXT-1', 'XYZZY', 'SASL-IR', 'AUTH=XOAUTH2', 'AUTH=PLAIN', 'AUTH=PLAIN-CLIENTTOKEN', 'AUTH=OAUTHBEARER', 'AUTH=XOAUTH')
         In [5]: conn.login('internetpython123@gmail.com', '123internet')
           22:59.92 > b'KIIF1 LOGIN internetpython123@gmail.com "123internet"'
-          23:01.79 < b'* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584'
+          23:01.79 < b'* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN
+          X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584'
           23:01.79 < b'KIIF1 ok internetpython123@gmail.com authenticated (Success)'])
         Out[5]: ('OK', [b'internetpython123@gmail.com authenticated (Success)'])
 
@@ -540,20 +630,27 @@ We can start by listing the mailboxes we have on the server:
 
     In [6]: conn.list()
       26:30.64 > b'IMKC2 LIST "" *'
-      26:30.72 < b'* LIST (\\HasNoChildren) "." "Trash"'
-      26:30.72 < b'* LIST (\\HasNoChildren) "." "Drafts"'
-      26:30.72 < b'* LIST (\\HasNoChildren) "." "Sent"'
-      26:30.72 < b'* LIST (\\HasNoChildren) "." "Junk"'
-      26:30.72 < b'* LIST (\\HasNoChildren) "." "INBOX"'
-      26:30.72 < b'IMKC2 OK List completed.'
+      26:30.72 < b'* LIST (\\HasNoChildren) "/" "INBOX"'
+      26:30.72 < b'* LIST (\\HasChildren \\Noselect) "/" "[Gmail]"'
+      26:30.72 < b'* LIST (\\All \\HasNoChildren ) "/" "[Gmail]/All Mail"'
+      26:30.72 < b'* LIST (\\Drafts \\HasNoChildren) "/" "[Gmail]/Drafts"'
+      26:30.72 < b'* LIST (\\HasNoChildren \\Important) "/" "[Gmail]/Important"'
+      26:30.72 < b'* LIST (\\HasNoChildren \\Sent) "/" "[Gmail]/Sent Mail"'
+      26:30.72 < b'* LIST (\\HasNoChildren \\Junk) "/" "[Gmail]/Spam"'
+      26:30.72 < b'* LIST (\\Flagged \\HasNoChildren) "/" "[Gmail]/Starred"'
+      26:30.72 < b'* LIST (\\HasNoChildren \\Trash) "/" "[Gmail]/Trash"'
+      26:30.72 < b'IMKC2 OK Success.'
     Out[6]:
     ('OK',
-     [b'(\\HasNoChildren) "." "Trash"',
-      b'(\\HasNoChildren) "." "Drafts"',
-      b'(\\HasNoChildren) "." "Sent"',
-      b'(\\HasNoChildren) "." "Junk"',
-      b'(\\HasNoChildren) "." "INBOX"'])
-
+     [b'(\\HasNoChildren) "/" "INBOX"',
+      b'(\\HasChildren \\Noselect) "/" "[Gmail]"',
+      b'(\\All \\HasNoChildren ) "/" "[Gmail]/All Mail"',
+      b'(\\Drafts \\HasNoChildren) "/" "[Gmail]/Drafts"'
+      b'(\\HasNoChildren \\Important) "/" "[Gmail]/Important"'
+      b'(\\HasNoChildren \\Sent) "/" "[Gmail]/Sent Mail"'
+      b'(\\HasNoChildren \\Junk) "/" "[Gmail]/Spam"'
+      b'(\\Flagged \\HasNoChildren) "/" "[Gmail]/Starred"'
+      b'(\\HasNoChildren \\Trash) "/" "[Gmail]/Trash"'
 
 .. nextslide::
 
@@ -563,16 +660,16 @@ earlier:
 .. code-block:: ipython
 
     In [7]: conn.select('INBOX')
-      27:20.96 > b'IMKC3 SELECT INBOX'
-      27:21.04 < b'* FLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft)'
-      27:21.04 < b'* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft \\*)] Flags permitted.'
-      27:21.04 < b'* 1 EXISTS'
+      27:20.96 > b'FKFC3 SELECT INBOX'
+      27:21.04 < b'* FLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft $NotPhishing $Phishing)'
+      27:21.04 < b'* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft $NotPhishing $Phishing \\*)] Flags permitted.'
+      27:21.04 < b'* OK [UIDVALIDITY 1] UIDs valid'
+      27:21.04 < b'* 4 EXISTS'
       27:21.04 < b'* 0 RECENT'
-      27:21.04 < b'* OK [UNSEEN 1] First unseen.'
-      27:21.04 < b'* OK [UIDVALIDITY 1357449499] UIDs valid'
-      27:21.04 < b'* OK [UIDNEXT 24] Predicted next UID'
-      27:21.04 < b'IMKC3 OK [READ-WRITE] Select completed.'
-    Out[7]: ('OK', [b'1'])
+      27:21.04 < b'* OK [UIDNEXT 5] Predicted next UID'
+      27:21.04 < b'* OK [HIGHESTMODSEQ 1506]'
+      27:21.04 < b'FKFC3 OK [READ-WRITE] INBOX selected. (Success)'
+    Out[7]: ('OK', [b'4'])
 
 
 .. nextslide::
@@ -587,11 +684,11 @@ We can search our selected mailbox for messages matching one or more criteria.
 
     .. code-block:: ipython
 
-        In [8]: conn.search(None, '(FROM "cris")')
-          28:43.02 > b'IMKC4 SEARCH (FROM "cris")'
-          28:43.09 < b'* SEARCH 1'
-          28:43.09 < b'IMKC4 OK Search completed.'
-        Out[8]: ('OK', [b'1'])
+        In [8]: conn.search(None, '(FROM "google")')
+          28:43.02 > b'IGGG3 SEARCH (FROM "google")'
+          28:43.09 < b'* SEARCH 1 2 3'
+          28:43.09 < b'IGGG3 OK Search completed (Success).'
+        Out[8]: ('OK', [b'1 2 3'])
 
 .. nextslide::
 
@@ -623,6 +720,8 @@ command to read it from the server.
 
 Python even includes an *email* library that would allow us to interact with
 this message in an *OO* style.
+
+https://docs.python.org/3.5/library/email.html
 
 .. rst-class:: build
 
@@ -663,7 +762,7 @@ Let's take a few minutes here to clear our heads.
 .. rst-class:: build
 .. container::
 
-    When we return, we'll learn about the king of protocols,
+    When we return, we'll have lightning talks and then learn about the king of protocols,
 
     .. rst-class:: large centered
 
@@ -1737,3 +1836,24 @@ one or more of the following challenges:
   returns a ``500 Internal Server Error`` response.
 * Instead of returning the python script in ``webroot`` as plain text, execute
   the file and return the results as HTML.
+
+
+Next Week
+---------
+
+Session 3:
+
+Lightning Talks:
+
+Paul Briant
+
+Deana Holmer
+
+Charles Robinson
+
+
+.. nextslide::
+
+Session 3:
+
+CGI, WSGI and Living Online
