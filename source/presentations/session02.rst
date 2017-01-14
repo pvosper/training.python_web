@@ -37,7 +37,46 @@ But First
 
 .. rst-class:: large centered
 
-Questions from the Homework?
+Questions from last week's material
+
+
+.. nextslide:: A quick utility method
+
+Let's define a method in place to help us see these constants. It will take a
+single argument, the shared prefix for a defined set of constants:
+
+.. rst-class:: build
+.. container::
+
+    (you can also find this in ``resources/session01/socket_tools.py``)
+
+    .. code-block:: ipython
+
+        In [37]: def get_constants(prefix):
+           ....:     """mapping of socket module constants to their names"""
+           ....:     return {getattr(socket, n): n
+           ....:             for n in dir(socket)
+           ....:             if n.startswith(prefix)
+           ....:     }
+           ....:
+
+
+.. nextslide:: A quick utility method
+
+Another way to write this:
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: ipython
+
+        In [38]: def get_constants(prefix):
+           ....:	"""mapping of socket module constants to their names"""
+           ....:	results = dict()
+           ....:	for n in dir(socket):
+           ....:		if n.startswith(prefix):
+           ....:			results[n]=getattr(socket, n)
+           ....:	return results
 
 
 .. nextslide::
