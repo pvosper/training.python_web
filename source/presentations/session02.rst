@@ -487,8 +487,28 @@ Begin by importing the ``imaplib`` module from the Python Standard Library:
 
 .. nextslide::
 
-I've prepared a server for us to use, but we'll need to set up a client to
-speak to it.
+I've created a temporary gmail account for us to use.
+
+
+.. nextslide::
+
+.. figure:: /_static/gmaildocs.PNG
+    :align: center
+    :width: 70%
+
+ 
+.. nextslide::
+
+.. figure:: /_static/lesssecureaccess.PNG
+    :align: center
+    :width: 70%
+
+ 
+.. nextslide::
+
+We'll need to set up a client to speak to the email account.
+
+.. nextslide::
 
 .. rst-class:: build
 .. container::
@@ -498,7 +518,7 @@ speak to it.
 
     .. code-block:: ipython
 
-        In [4]: conn = imaplib.IMAP4_SSL('mail.webfaction.com')
+        In [4]: conn = imaplib.IMAP4_SSL('imap.gmail.com')
           22:40.32 imaplib version 2.58
           22:40.32 new IMAP4 connection, tag=b'IMKC'
           22:40.38 < b'* OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN] Dovecot ready.'
