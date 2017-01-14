@@ -118,7 +118,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>But First</h3>
     </hgroup>
     <article class="">
-      <p class="large centered">Questions from the Homework?</p>
+      <p class="large centered">Questions from last week's material</p>
 
 
 
@@ -128,6 +128,56 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>  <slide class="level-3" id="id4">
     <hgroup>
+      <h3>A quick utility method</h3>
+    </hgroup>
+    <article class="">
+      <p>Let's define a method in place to help us see these constants. It will take a
+single argument, the shared prefix for a defined set of constants:</p>
+<div class="build docutils container">
+<p>(you can also find this in <code class="docutils literal"><span class="pre">resources/session01/socket_tools.py</span></code>)</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="k">def</span> <span class="nf">get_constants</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="sd">&quot;&quot;&quot;mapping of socket module constants to their names&quot;&quot;&quot;</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="p">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="n">n</span>
+<span class="gp">   ....: </span>            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
+<span class="gp">   ....: </span>            <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="p">}</span>
+<span class="gp">   ....:</span>
+</pre></div>
+</div>
+</div>
+
+
+
+<div class="slide-no">4</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id5">
+    <hgroup>
+      <h3>A quick utility method</h3>
+    </hgroup>
+    <article class="">
+      <p>Another way to write this:</p>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="k">def</span> <span class="nf">get_constants</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<span class="gp">   ....: </span>       <span class="sd">&quot;&quot;&quot;mapping of socket module constants to their names&quot;&quot;&quot;</span>
+<span class="gp">   ....: </span>       <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="gp">   ....: </span>       <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">socket</span><span class="p">):</span>
+<span class="gp">   ....: </span>               <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<span class="gp">   ....: </span>                       <span class="n">results</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="gp">   ....: </span>       <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+
+
+
+<div class="slide-no">5</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id6">
+    <hgroup>
       <h3>But First</h3>
     </hgroup>
     <article class="">
@@ -135,7 +185,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">4</div>
+<div class="slide-no">6</div>
 
 
     </article>
@@ -151,11 +201,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">5</div>
+<div class="slide-no">7</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id5">
+  </slide>  <slide class="level-3" id="id7">
     <hgroup>
       <h3>Protocols IRL</h3>
     </hgroup>
@@ -171,11 +221,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">6</div>
+<div class="slide-no">8</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id6">
+  </slide>  <slide class="level-3" id="id8">
     <hgroup>
       <h3>Protocols IRL</h3>
     </hgroup>
@@ -187,11 +237,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">9</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id7">
+  </slide>  <slide class="level-3" id="id9">
     <hgroup>
       <h3>Protocols In Computers</h3>
     </hgroup>
@@ -207,7 +257,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">10</div>
 
 
     </article>
@@ -230,11 +280,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">11</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id8">
+  </slide>  <slide class="level-3" id="id10">
     <hgroup>
       <h3>A Word on Typography</h3>
     </hgroup>
@@ -249,7 +299,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">12</div>
 
 
     </article>
@@ -274,11 +324,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">13</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id9">
+  </slide>  <slide class="level-3" id="id11">
     <hgroup>
       <h3>SMTP</h3>
     </hgroup>
@@ -302,11 +352,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">12</div>
+<div class="slide-no">14</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id10">
+  </slide>  <slide class="level-3" id="id12">
     <hgroup>
       <h3>SMTP</h3>
     </hgroup>
@@ -320,11 +370,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">13</div>
+<div class="slide-no">15</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id11">
+  </slide>  <slide class="level-3" id="id13">
     <hgroup>
       <h3>SMTP Characteristics</h3>
     </hgroup>
@@ -340,7 +390,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">14</div>
+<div class="slide-no">16</div>
 
 
     </article>
@@ -364,11 +414,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">15</div>
+<div class="slide-no">17</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id12">
+  </slide>  <slide class="level-3" id="id14">
     <hgroup>
       <h3>POP3</h3>
     </hgroup>
@@ -386,11 +436,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">16</div>
+<div class="slide-no">18</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id13">
+  </slide>  <slide class="level-3" id="id15">
     <hgroup>
       <h3>POP3</h3>
     </hgroup>
@@ -408,11 +458,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">17</div>
+<div class="slide-no">19</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id14">
+  </slide>  <slide class="level-3" id="id16">
     <hgroup>
       <h3>POP3</h3>
     </hgroup>
@@ -427,11 +477,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">18</div>
+<div class="slide-no">20</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id15">
+  </slide>  <slide class="level-3" id="id17">
     <hgroup>
       <h3>POP3 Characteristics</h3>
     </hgroup>
@@ -449,11 +499,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">19</div>
+<div class="slide-no">21</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id16">
+  </slide>  <slide class="level-3" id="id18">
     <hgroup>
       <h3>One Other Difference</h3>
     </hgroup>
@@ -468,7 +518,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">20</div>
+<div class="slide-no">22</div>
 
 
     </article>
@@ -490,11 +540,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">21</div>
+<div class="slide-no">23</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id17">
+  </slide>  <slide class="level-3" id="id19">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -512,11 +562,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">22</div>
+<div class="slide-no">24</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id18">
+  </slide>  <slide class="level-3" id="id20">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -531,11 +581,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">23</div>
+<div class="slide-no">25</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id19">
+  </slide>  <slide class="level-3" id="id21">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -552,11 +602,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">24</div>
+<div class="slide-no">26</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id20">
+  </slide>  <slide class="level-3" id="id22">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -574,11 +624,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">25</div>
+<div class="slide-no">27</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id21">
+  </slide>  <slide class="level-3" id="id23">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -594,11 +644,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">26</div>
+<div class="slide-no">28</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id22">
+  </slide>  <slide class="level-3" id="id24">
     <hgroup>
       <h3>IMAP Characteristics</h3>
     </hgroup>
@@ -612,11 +662,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">27</div>
+<div class="slide-no">29</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id23">
+  </slide>  <slide class="level-3" id="id25">
     <hgroup>
       <h3>IMAP Differences</h3>
     </hgroup>
@@ -632,7 +682,7 @@ sequence</li>
 
 
 
-<div class="slide-no">28</div>
+<div class="slide-no">30</div>
 
 
     </article>
@@ -649,11 +699,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">29</div>
+<div class="slide-no">31</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id24">
+  </slide>  <slide class="level-3" id="id26">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -677,44 +727,98 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">30</div>
+<div class="slide-no">32</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id25">
+  </slide>  <slide class="level-3" id="id27">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
     <article class="">
-      <p>I've prepared a server for us to use, but we'll need to set up a client to
-speak to it.</p>
-<div class="build docutils container">
+      <p>I've created a temporary gmail account for us to use.</p>
+
+
+
+<div class="slide-no">33</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id28">
+    <hgroup>
+      <h3>Using IMAP in Python</h3>
+    </hgroup>
+    <article class="">
+      <div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/gmaildocs.PNG"><img alt="../_images/gmaildocs.PNG" src="../_images/gmaildocs.PNG" style="width: 70%;" /></a>
+</div>
+
+
+
+<div class="slide-no">34</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id29">
+    <hgroup>
+      <h3>Using IMAP in Python</h3>
+    </hgroup>
+    <article class="">
+      <div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lesssecureaccess.PNG"><img alt="../_images/lesssecureaccess.PNG" src="../_images/lesssecureaccess.PNG" style="width: 70%;" /></a>
+</div>
+
+
+
+<div class="slide-no">35</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id30">
+    <hgroup>
+      <h3>Using IMAP in Python</h3>
+    </hgroup>
+    <article class="">
+      <p>We'll need to set up a client to speak to the email account.</p>
+
+
+
+<div class="slide-no">36</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id31">
+    <hgroup>
+      <h3>Using IMAP in Python</h3>
+    </hgroup>
+    <article class="">
+      <div class="build docutils container">
 <p>Our server requires SSL (Secure Socket Layer) for connecting to IMAP
 servers, so let's initialize an IMAP4_SSL client and authenticate:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">conn</span> <span class="o">=</span> <span class="n">imaplib</span><span class="o">.</span><span class="n">IMAP4_SSL</span><span class="p">(</span><span class="s1">&#39;mail.webfaction.com&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">conn</span> <span class="o">=</span> <span class="n">imaplib</span><span class="o">.</span><span class="n">IMAP4_SSL</span><span class="p">(</span><span class="s1">&#39;imap.gmail.com&#39;</span><span class="p">)</span>
 <span class="go">  22:40.32 imaplib version 2.58</span>
-<span class="go">  22:40.32 new IMAP4 connection, tag=b&#39;IMKC&#39;</span>
-<span class="go">  22:40.38 &lt; b&#39;* OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN] Dovecot ready.&#39;</span>
-<span class="go">  22:40.38 &gt; b&#39;IMKC0 CAPABILITY&#39;</span>
-<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN&#39;</span>
-<span class="go">  22:40.45 &lt; b&#39;IMKC0 OK Capability completed.&#39;</span>
-<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;LITERAL+&#39;, &#39;SASL-IR&#39;, &#39;LOGIN-REFERRALS&#39;, &#39;ID&#39;, &#39;ENABLE&#39;, &#39;IDLE&#39;, &#39;AUTH=PLAIN&#39;)</span>
-<span class="gp">In [5]: </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;crisewing_demobox&#39;</span><span class="p">,</span> <span class="s1">&#39;s00p3rs3cr3t&#39;</span><span class="p">)</span>
-<span class="go">  22:59.92 &gt; b&#39;IMKC1 LOGIN crisewing_demobox &quot;s00p3rs3cr3t&quot;&#39;</span>
-<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 SASL-IR SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE CHILDREN NAMESPACE LOGIN-REFERRALS STARTTLS AUTH=PLAIN&#39;</span>
-<span class="go">  23:01.79 &lt; b&#39;IMKC1 OK Logged in.&#39;</span>
-<span class="gh">Out[5]: </span><span class="go">(&#39;OK&#39;, [b&#39;Logged in.&#39;])</span>
+<span class="go">  22:40.32 new IMAP4 connection, tag=b&#39;KIFF&#39;</span>
+<span class="go">  22:40.38 &lt; b&#39;* OK Gimap ready for requests from 206.169.229.66 d125mb177612104oig&#39;</span>
+<span class="go">  22:40.38 &gt; b&#39;KIIF0 CAPABILITY&#39;</span>
+<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH&#39;</span>
+<span class="go">  22:40.45 &lt; b&#39;KIIF0 OK Thats all she wrote! d125mb177612104oig&#39;</span>
+<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;UNSELECT&#39;, &#39;IDLE&#39;, &#39;NAMESPACE&#39;, &#39;QUOTA&#39;, &#39;ID&#39;, &#39;XLIST&#39;, &#39;CHILDREN&#39;, &#39;X-GM-EXT-1&#39;, &#39;XYZZY&#39;, &#39;SASL-IR&#39;, &#39;AUTH=XOAUTH2&#39;, &#39;AUTH=PLAIN&#39;, &#39;AUTH=PLAIN-CLIENTTOKEN&#39;, &#39;AUTH=OAUTHBEARER&#39;, &#39;AUTH=XOAUTH&#39;)</span>
+<span class="gp">In [5]: </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;internetpython123@gmail.com&#39;</span><span class="p">,</span> <span class="s1">&#39;123internet&#39;</span><span class="p">)</span>
+<span class="go">  22:59.92 &gt; b&#39;KIIF1 LOGIN internetpython123@gmail.com &quot;123internet&quot;&#39;</span>
+<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584&#39;</span>
+<span class="go">  23:01.79 &lt; b&#39;KIIF1 ok internetpython123@gmail.com authenticated (Success)&#39;])</span>
+<span class="gh">Out[5]: </span><span class="go">(&#39;OK&#39;, [b&#39;internetpython123@gmail.com authenticated (Success)&#39;])</span>
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">31</div>
+<div class="slide-no">37</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id26">
+  </slide>  <slide class="level-3" id="id32">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -740,11 +844,11 @@ servers, so let's initialize an IMAP4_SSL client and authenticate:</p>
 
 
 
-<div class="slide-no">32</div>
+<div class="slide-no">38</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id27">
+  </slide>  <slide class="level-3" id="id33">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -767,11 +871,11 @@ earlier:</p>
 
 
 
-<div class="slide-no">33</div>
+<div class="slide-no">39</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id28">
+  </slide>  <slide class="level-3" id="id34">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -791,11 +895,11 @@ that match our search:</p>
 
 
 
-<div class="slide-no">34</div>
+<div class="slide-no">40</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id29">
+  </slide>  <slide class="level-3" id="id35">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -822,11 +926,11 @@ command to read it from the server.</p>
 
 
 
-<div class="slide-no">35</div>
+<div class="slide-no">41</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id30">
+  </slide>  <slide class="level-3" id="id36">
     <hgroup>
       <h3>Batteries Included</h3>
     </hgroup>
@@ -838,7 +942,7 @@ this message in an <em>OO</em> style.</p>
 
 
 
-<div class="slide-no">36</div>
+<div class="slide-no">42</div>
 
 
     </article>
@@ -863,7 +967,7 @@ some strings</p>
 
 
 
-<div class="slide-no">37</div>
+<div class="slide-no">43</div>
 
 
     </article>
@@ -880,7 +984,7 @@ some strings</p>
 
 
 
-<div class="slide-no">38</div>
+<div class="slide-no">44</div>
 
 
     </article>
@@ -902,7 +1006,7 @@ some strings</p>
 
 
 
-<div class="slide-no">39</div>
+<div class="slide-no">45</div>
 
 
     </article>
@@ -922,11 +1026,11 @@ character sequence.</p>
 
 
 
-<div class="slide-no">40</div>
+<div class="slide-no">46</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id31">
+  </slide>  <slide class="level-3" id="id37">
     <hgroup>
       <h3>What does HTTP look like?</h3>
     </hgroup>
@@ -949,11 +1053,11 @@ Content-Type: text/html; charset=UTF-8
 
 
 
-<div class="slide-no">41</div>
+<div class="slide-no">47</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id32">
+  </slide>  <slide class="level-3" id="id38">
     <hgroup>
       <h3>HTTP Core Format</h3>
     </hgroup>
@@ -969,7 +1073,7 @@ Content-Type: text/html; charset=UTF-8
 
 
 
-<div class="slide-no">42</div>
+<div class="slide-no">48</div>
 
 
     </article>
@@ -989,11 +1093,11 @@ the rest of the session</p>
 
 
 
-<div class="slide-no">43</div>
+<div class="slide-no">49</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id33">
+  </slide>  <slide class="level-3" id="id39">
     <hgroup>
       <h3>TDD IRL (a quick aside)</h3>
     </hgroup>
@@ -1009,11 +1113,11 @@ assignment.</p>
 
 
 
-<div class="slide-no">44</div>
+<div class="slide-no">50</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id34">
+  </slide>  <slide class="level-3" id="id40">
     <hgroup>
       <h3>Run the Tests</h3>
     </hgroup>
@@ -1034,11 +1138,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">45</div>
+<div class="slide-no">51</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id35">
+  </slide>  <slide class="level-3" id="id41">
     <hgroup>
       <h3>Viewing an HTTP Request</h3>
     </hgroup>
@@ -1054,11 +1158,11 @@ server, let's use a web browser!</p>
 
 
 
-<div class="slide-no">46</div>
+<div class="slide-no">52</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id36">
+  </slide>  <slide class="level-3" id="id42">
     <hgroup>
       <h3>A Bad Interaction</h3>
     </hgroup>
@@ -1077,11 +1181,11 @@ expecting it.</p>
 
 
 
-<div class="slide-no">47</div>
+<div class="slide-no">53</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id37">
+  </slide>  <slide class="level-3" id="id43">
     <hgroup>
       <h3>Echoing A Request</h3>
     </hgroup>
@@ -1107,11 +1211,11 @@ Request</em> as sent by your browser.</p>
 
 
 
-<div class="slide-no">48</div>
+<div class="slide-no">54</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id38">
+  </slide>  <slide class="level-3" id="id44">
     <hgroup>
       <h3>HTTP Debugging</h3>
     </hgroup>
@@ -1132,11 +1236,11 @@ headers and all. Very useful.</p>
 
 
 
-<div class="slide-no">49</div>
+<div class="slide-no">55</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id39">
+  </slide>  <slide class="level-3" id="id45">
     <hgroup>
       <h3>Stop! Demo Time</h3>
     </hgroup>
@@ -1145,11 +1249,11 @@ headers and all. Very useful.</p>
 
 
 
-<div class="slide-no">50</div>
+<div class="slide-no">56</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id40">
+  </slide>  <slide class="level-3" id="id46">
     <hgroup>
       <h3>Other Debugging Options</h3>
     </hgroup>
@@ -1170,7 +1274,7 @@ when you have the time.</p>
 
 
 
-<div class="slide-no">51</div>
+<div class="slide-no">57</div>
 
 
     </article>
@@ -1196,11 +1300,11 @@ Host: www.mysite1.com:80&lt;CRLF&gt;
 
 
 
-<div class="slide-no">52</div>
+<div class="slide-no">58</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id41">
+  </slide>  <slide class="level-3" id="id47">
     <hgroup>
       <h3>HTTP Responses</h3>
     </hgroup>
@@ -1220,11 +1324,11 @@ this is a pretty minimal response
 
 
 
-<div class="slide-no">53</div>
+<div class="slide-no">59</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id42">
+  </slide>  <slide class="level-3" id="id48">
     <hgroup>
       <h3>Returning a Canned HTTP Response</h3>
     </hgroup>
@@ -1247,11 +1351,11 @@ this is a pretty minimal response
 
 
 
-<div class="slide-no">54</div>
+<div class="slide-no">60</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id43">
+  </slide>  <slide class="level-3" id="id49">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1270,11 +1374,11 @@ this is a pretty minimal response
 
 
 
-<div class="slide-no">55</div>
+<div class="slide-no">61</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id44">
+  </slide>  <slide class="level-3" id="id50">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1295,11 +1399,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">56</div>
+<div class="slide-no">62</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id45">
+  </slide>  <slide class="level-3" id="id51">
     <hgroup>
       <h3>Server Modifications</h3>
     </hgroup>
@@ -1317,11 +1421,11 @@ for HTTP traffic, say 1024.</p>
 
 
 
-<div class="slide-no">57</div>
+<div class="slide-no">63</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id46">
+  </slide>  <slide class="level-3" id="id52">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1348,11 +1452,11 @@ for HTTP traffic, say 1024.</p>
 
 
 
-<div class="slide-no">58</div>
+<div class="slide-no">64</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id47">
+  </slide>  <slide class="level-3" id="id53">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1376,7 +1480,7 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">59</div>
+<div class="slide-no">65</div>
 
 
     </article>
@@ -1397,11 +1501,11 @@ three parts:</p>
 
 
 
-<div class="slide-no">60</div>
+<div class="slide-no">66</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id48">
+  </slide>  <slide class="level-3" id="id54">
     <hgroup>
       <h3>HTTP Methods</h3>
     </hgroup>
@@ -1421,11 +1525,11 @@ three parts:</p>
 
 
 
-<div class="slide-no">61</div>
+<div class="slide-no">67</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id49">
+  </slide>  <slide class="level-3" id="id55">
     <hgroup>
       <h3>HTTP Methods</h3>
     </hgroup>
@@ -1441,11 +1545,11 @@ storage:</p>
 
 
 
-<div class="slide-no">62</div>
+<div class="slide-no">68</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id50">
+  </slide>  <slide class="level-3" id="id56">
     <hgroup>
       <h3>Methods: Safe &lt;--&gt; Unsafe</h3>
     </hgroup>
@@ -1470,11 +1574,11 @@ they might change something on the server:</p>
 
 
 
-<div class="slide-no">63</div>
+<div class="slide-no">69</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id51">
+  </slide>  <slide class="level-3" id="id57">
     <hgroup>
       <h3>Methods: Idempotent &lt;--&gt; ???</h3>
     </hgroup>
@@ -1499,11 +1603,11 @@ they might change something on the server:</p>
 
 
 
-<div class="slide-no">64</div>
+<div class="slide-no">70</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id52">
+  </slide>  <slide class="level-3" id="id58">
     <hgroup>
       <h3>HTTP Method Handling</h3>
     </hgroup>
@@ -1519,11 +1623,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">65</div>
+<div class="slide-no">71</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id53">
+  </slide>  <slide class="level-3" id="id59">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1539,11 +1643,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">66</div>
+<div class="slide-no">72</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id54">
+  </slide>  <slide class="level-3" id="id60">
     <hgroup>
       <h3>Update the Server</h3>
     </hgroup>
@@ -1557,11 +1661,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">67</div>
+<div class="slide-no">73</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id55">
+  </slide>  <slide class="level-3" id="id61">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1589,11 +1693,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">68</div>
+<div class="slide-no">74</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id56">
+  </slide>  <slide class="level-3" id="id62">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1614,11 +1718,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">69</div>
+<div class="slide-no">75</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id57">
+  </slide>  <slide class="level-3" id="id63">
     <hgroup>
       <h3>What About a Browser?</h3>
     </hgroup>
@@ -1638,7 +1742,7 @@ error condition.  In a second terminal window run the script like so:</p>
 
 
 
-<div class="slide-no">70</div>
+<div class="slide-no">76</div>
 
 
     </article>
@@ -1657,11 +1761,11 @@ our server has terminated as well.</p>
 
 
 
-<div class="slide-no">71</div>
+<div class="slide-no">77</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id58">
+  </slide>  <slide class="level-3" id="id64">
     <hgroup>
       <h3>HTTP Response Codes</h3>
     </hgroup>
@@ -1682,11 +1786,11 @@ the request.</p>
 
 
 
-<div class="slide-no">72</div>
+<div class="slide-no">78</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id59">
+  </slide>  <slide class="level-3" id="id65">
     <hgroup>
       <h3>Common Response Codes</h3>
     </hgroup>
@@ -1708,11 +1812,11 @@ There are a lot of them for a reason.</p>
 
 
 
-<div class="slide-no">73</div>
+<div class="slide-no">79</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id60">
+  </slide>  <slide class="level-3" id="id66">
     <hgroup>
       <h3>Handling our Error</h3>
     </hgroup>
@@ -1728,11 +1832,11 @@ There are a lot of them for a reason.</p>
 
 
 
-<div class="slide-no">74</div>
+<div class="slide-no">80</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id61">
+  </slide>  <slide class="level-3" id="id67">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1748,11 +1852,11 @@ There are a lot of them for a reason.</p>
 
 
 
-<div class="slide-no">75</div>
+<div class="slide-no">81</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id62">
+  </slide>  <slide class="level-3" id="id68">
     <hgroup>
       <h3>Server Updates</h3>
     </hgroup>
@@ -1768,11 +1872,11 @@ correctly.  It should</p>
 
 
 
-<div class="slide-no">76</div>
+<div class="slide-no">82</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id63">
+  </slide>  <slide class="level-3" id="id69">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1799,11 +1903,11 @@ correctly.  It should</p>
 
 
 
-<div class="slide-no">77</div>
+<div class="slide-no">83</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id64">
+  </slide>  <slide class="level-3" id="id70">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1824,7 +1928,7 @@ now.</p>
 
 
 
-<div class="slide-no">78</div>
+<div class="slide-no">84</div>
 
 
     </article>
@@ -1852,11 +1956,11 @@ But what happens if we make a different request?</p>
 
 
 
-<div class="slide-no">79</div>
+<div class="slide-no">85</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id65">
+  </slide>  <slide class="level-3" id="id71">
     <hgroup>
       <h3>Determining a Resource</h3>
     </hgroup>
@@ -1872,11 +1976,11 @@ request.</p>
 
 
 
-<div class="slide-no">80</div>
+<div class="slide-no">86</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id66">
+  </slide>  <slide class="level-3" id="id72">
     <hgroup>
       <h3>HTTP Requests: URI</h3>
     </hgroup>
@@ -1897,11 +2001,11 @@ be returned</li>
 
 
 
-<div class="slide-no">81</div>
+<div class="slide-no">87</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id67">
+  </slide>  <slide class="level-3" id="id73">
     <hgroup>
       <h3>Parsing a Request</h3>
     </hgroup>
@@ -1915,11 +2019,11 @@ line of a request</p>
 
 
 
-<div class="slide-no">82</div>
+<div class="slide-no">88</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id68">
+  </slide>  <slide class="level-3" id="id74">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1937,11 +2041,11 @@ line of a request</p>
 
 
 
-<div class="slide-no">83</div>
+<div class="slide-no">89</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id69">
+  </slide>  <slide class="level-3" id="id75">
     <hgroup>
       <h3>Pass It Along</h3>
     </hgroup>
@@ -1968,7 +2072,7 @@ line of a request</p>
 
 
 
-<div class="slide-no">84</div>
+<div class="slide-no">90</div>
 
 
     </article>
@@ -1997,7 +2101,7 @@ let the server run.</p>
 
 
 
-<div class="slide-no">85</div>
+<div class="slide-no">91</div>
 
 
     </article>
@@ -2024,7 +2128,7 @@ by the protocol</li>
 
 
 
-<div class="slide-no">86</div>
+<div class="slide-no">92</div>
 
 
     </article>
@@ -2044,7 +2148,7 @@ as part of the response.</p>
 
 
 
-<div class="slide-no">87</div>
+<div class="slide-no">93</div>
 
 
     </article>
@@ -2067,7 +2171,7 @@ value for the previous header</li>
 
 
 
-<div class="slide-no">88</div>
+<div class="slide-no">94</div>
 
 
     </article>
@@ -2092,7 +2196,7 @@ client what to expect.</p>
 
 
 
-<div class="slide-no">89</div>
+<div class="slide-no">95</div>
 
 
     </article>
@@ -2117,7 +2221,7 @@ extension to a type:</p>
 
 
 
-<div class="slide-no">90</div>
+<div class="slide-no">96</div>
 
 
     </article>
@@ -2141,7 +2245,7 @@ that the server can catch to return a 404 response.</li>
 
 
 
-<div class="slide-no">91</div>
+<div class="slide-no">97</div>
 
 
     </article>
@@ -2161,7 +2265,7 @@ completed the assignment.</p>
 
 
 
-<div class="slide-no">92</div>
+<div class="slide-no">98</div>
 
 
     </article>
@@ -2184,7 +2288,7 @@ it there, and then close the pull request.</p>
 
 
 
-<div class="slide-no">93</div>
+<div class="slide-no">99</div>
 
 
     </article>
@@ -2209,7 +2313,7 @@ the file and return the results as HTML.</li>
 
 
 
-<div class="slide-no">94</div>
+<div class="slide-no">100</div>
 
 
     </article>

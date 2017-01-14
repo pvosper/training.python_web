@@ -87,7 +87,33 @@
 </div>
 <div class="section" id="but-first">
 <h3>But First<a class="headerlink" href="#but-first" title="Permalink to this headline">¶</a></h3>
-<p class="large centered">Questions from the Homework?</p>
+<p class="large centered">Questions from last week&#8217;s material</p>
+<p>Let&#8217;s define a method in place to help us see these constants. It will take a
+single argument, the shared prefix for a defined set of constants:</p>
+<div class="build docutils container">
+<p>(you can also find this in <code class="docutils literal"><span class="pre">resources/session01/socket_tools.py</span></code>)</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="k">def</span> <span class="nf">get_constants</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="sd">&quot;&quot;&quot;mapping of socket module constants to their names&quot;&quot;&quot;</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="p">{</span><span class="nb">getattr</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span> <span class="n">n</span>
+<span class="gp">   ....: </span>            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
+<span class="gp">   ....: </span>            <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="p">}</span>
+<span class="gp">   ....:</span>
+</pre></div>
+</div>
+</div>
+<p>Another way to write this:</p>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="k">def</span> <span class="nf">get_constants</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<span class="gp">   ....: </span>       <span class="sd">&quot;&quot;&quot;mapping of socket module constants to their names&quot;&quot;&quot;</span>
+<span class="gp">   ....: </span>       <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="gp">   ....: </span>       <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">socket</span><span class="p">):</span>
+<span class="gp">   ....: </span>               <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<span class="gp">   ....: </span>                       <span class="n">results</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">socket</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="gp">   ....: </span>       <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
 <p class="large centered">Examples of an echo server using <code class="docutils literal"><span class="pre">select</span></code></p>
 </div>
 <div class="section" id="what-is-a-protocol">
@@ -327,24 +353,30 @@ Fire up your python interpreters and prepare to type.</div>
 </div>
 <p>Setting <code class="docutils literal"><span class="pre">imap.Debug</span></code> shows us what is sent and received</p>
 </div>
-<p>I&#8217;ve prepared a server for us to use, but we&#8217;ll need to set up a client to
-speak to it.</p>
+<p>I&#8217;ve created a temporary gmail account for us to use.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/gmaildocs.PNG"><img alt="../_images/gmaildocs.PNG" src="../_images/gmaildocs.PNG" style="width: 70%;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/lesssecureaccess.PNG"><img alt="../_images/lesssecureaccess.PNG" src="../_images/lesssecureaccess.PNG" style="width: 70%;" /></a>
+</div>
+<p>We&#8217;ll need to set up a client to speak to the email account.</p>
 <div class="build docutils container">
 <p>Our server requires SSL (Secure Socket Layer) for connecting to IMAP
 servers, so let&#8217;s initialize an IMAP4_SSL client and authenticate:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">conn</span> <span class="o">=</span> <span class="n">imaplib</span><span class="o">.</span><span class="n">IMAP4_SSL</span><span class="p">(</span><span class="s1">&#39;mail.webfaction.com&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">conn</span> <span class="o">=</span> <span class="n">imaplib</span><span class="o">.</span><span class="n">IMAP4_SSL</span><span class="p">(</span><span class="s1">&#39;imap.gmail.com&#39;</span><span class="p">)</span>
 <span class="go">  22:40.32 imaplib version 2.58</span>
-<span class="go">  22:40.32 new IMAP4 connection, tag=b&#39;IMKC&#39;</span>
-<span class="go">  22:40.38 &lt; b&#39;* OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN] Dovecot ready.&#39;</span>
-<span class="go">  22:40.38 &gt; b&#39;IMKC0 CAPABILITY&#39;</span>
-<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN&#39;</span>
-<span class="go">  22:40.45 &lt; b&#39;IMKC0 OK Capability completed.&#39;</span>
-<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;LITERAL+&#39;, &#39;SASL-IR&#39;, &#39;LOGIN-REFERRALS&#39;, &#39;ID&#39;, &#39;ENABLE&#39;, &#39;IDLE&#39;, &#39;AUTH=PLAIN&#39;)</span>
-<span class="gp">In [5]: </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;crisewing_demobox&#39;</span><span class="p">,</span> <span class="s1">&#39;s00p3rs3cr3t&#39;</span><span class="p">)</span>
-<span class="go">  22:59.92 &gt; b&#39;IMKC1 LOGIN crisewing_demobox &quot;s00p3rs3cr3t&quot;&#39;</span>
-<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 SASL-IR SORT THREAD=REFERENCES MULTIAPPEND UNSELECT LITERAL+ IDLE CHILDREN NAMESPACE LOGIN-REFERRALS STARTTLS AUTH=PLAIN&#39;</span>
-<span class="go">  23:01.79 &lt; b&#39;IMKC1 OK Logged in.&#39;</span>
-<span class="gh">Out[5]: </span><span class="go">(&#39;OK&#39;, [b&#39;Logged in.&#39;])</span>
+<span class="go">  22:40.32 new IMAP4 connection, tag=b&#39;KIFF&#39;</span>
+<span class="go">  22:40.38 &lt; b&#39;* OK Gimap ready for requests from 206.169.229.66 d125mb177612104oig&#39;</span>
+<span class="go">  22:40.38 &gt; b&#39;KIIF0 CAPABILITY&#39;</span>
+<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH&#39;</span>
+<span class="go">  22:40.45 &lt; b&#39;KIIF0 OK Thats all she wrote! d125mb177612104oig&#39;</span>
+<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;UNSELECT&#39;, &#39;IDLE&#39;, &#39;NAMESPACE&#39;, &#39;QUOTA&#39;, &#39;ID&#39;, &#39;XLIST&#39;, &#39;CHILDREN&#39;, &#39;X-GM-EXT-1&#39;, &#39;XYZZY&#39;, &#39;SASL-IR&#39;, &#39;AUTH=XOAUTH2&#39;, &#39;AUTH=PLAIN&#39;, &#39;AUTH=PLAIN-CLIENTTOKEN&#39;, &#39;AUTH=OAUTHBEARER&#39;, &#39;AUTH=XOAUTH&#39;)</span>
+<span class="gp">In [5]: </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;internetpython123@gmail.com&#39;</span><span class="p">,</span> <span class="s1">&#39;123internet&#39;</span><span class="p">)</span>
+<span class="go">  22:59.92 &gt; b&#39;KIIF1 LOGIN internetpython123@gmail.com &quot;123internet&quot;&#39;</span>
+<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584&#39;</span>
+<span class="go">  23:01.79 &lt; b&#39;KIIF1 ok internetpython123@gmail.com authenticated (Success)&#39;])</span>
+<span class="gh">Out[5]: </span><span class="go">(&#39;OK&#39;, [b&#39;internetpython123@gmail.com authenticated (Success)&#39;])</span>
 </pre></div>
 </div>
 </div>
