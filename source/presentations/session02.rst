@@ -769,13 +769,23 @@ Let's take a few minutes here to clear our heads.
     HTTP
 
 
+Lightning Talks
+===============
+Paul Casey
+
+Thomas Johnson
+
+David Tobey
+
+
+
 HTTP
 ====
 
 .. rst-class:: left
 .. container::
 
-    HTTP is no different
+    HTTP is no different than the protocols we looked at earlier
 
     .. rst-class:: build
     .. container::
