@@ -43,23 +43,7 @@
     </a>
   </div>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="session03.html" title="Session 03"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="session01.html" title="Session 01"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
-      </ul>
-    </div>  
+<generator object macro at 0x0000027E2DCC9EB8>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -77,7 +61,7 @@
 <div class="build left docutils container">
 <p>Programming languages like Python are the languages we speak to computers.</p>
 <p><em>Protocols</em> are the languages that computers speak to each-other.</p>
-<p>This sesson we&#8217;ll look at a few of them and</p>
+<p>This session we&#8217;ll look at a few of them and</p>
 <ul class="build simple">
 <li>Learn what makes them similar</li>
 <li>Learn what makes them different</li>
@@ -87,7 +71,55 @@
 </div>
 <div class="section" id="but-first">
 <h3>But First<a class="headerlink" href="#but-first" title="Permalink to this headline">¶</a></h3>
+<div class="build left docutils container">
+<p>Agenda:</p>
+<ul class="build simple">
+<li>Review of last week</li>
+<li>Everyone have what they need (working Python, google group, Slack?)</li>
+<li>Questions on last week&#8217;s material</li>
+<li>Go over homework</li>
+<li>Intro to Protocols</li>
+<li>Break</li>
+<li>Lightning Talks (Paul Casey, Thomas Johnson, David Tobey)</li>
+<li>Writing HTTP</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div>
+<p class="large centered">Review</p>
+<p class="build left">Requirements to pass the course</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Attend &gt;= 8 sessions</li>
+<li>Show us your Django app at the end of the course</li>
+<li>1 Lightning Talk</li>
+</ul>
+</div></blockquote>
+<p class="build left">Not required by encouraged</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Weekly homework</li>
+<li>Class participation</li>
+<li>Help classmates in the Slack channel</li>
+</ul>
+</div></blockquote>
 <p class="large centered">Questions from last week&#8217;s material</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/socket_docs.PNG"><img alt="../_images/socket_docs.PNG" src="../_images/socket_docs.PNG" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Socket Docs: <a class="reference external" href="https://docs.python.org/3.5/library/socket.html#socket.getdefaulttimeout">https://docs.python.org/3.5/library/socket.html#socket.getdefaulttimeout</a></span></p>
+</div>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="sd">&quot;&quot;&quot;returns the text, which is &#39;hello&#39; by default&quot;&quot;&quot;</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">text</span>
+<span class="gp">   ....:</span>
+<span class="gp">In [2]: </span><span class="n">hello</span><span class="p">()</span>
+<span class="go">Out [2]: &#39;hello&#39;</span>
+
+<span class="gp">In [3]: </span><span class="n">hello</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+<span class="go">Out [3]: &#39;hi&#39;</span>
+</pre></div>
+</div>
+</div>
 <p>Let&#8217;s define a method in place to help us see these constants. It will take a
 single argument, the shared prefix for a defined set of constants:</p>
 <div class="build docutils container">
@@ -114,7 +146,8 @@ single argument, the shared prefix for a defined set of constants:</p>
 </pre></div>
 </div>
 </div>
-<p class="large centered">Examples of an echo server using <code class="docutils literal"><span class="pre">select</span></code></p>
+<p class="large centered">Let&#8217;s go over the homework</p>
+<p class="large centered">On to Protocol!</p>
 </div>
 <div class="section" id="what-is-a-protocol">
 <h3>What is a Protocol?<a class="headerlink" href="#what-is-a-protocol" title="Permalink to this headline">¶</a></h3>
@@ -130,7 +163,7 @@ single argument, the shared prefix for a defined set of constants:</p>
 <li>What do (and don&#8217;t) you talk about at a dinner party?</li>
 <li>...?</li>
 </ul>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/icup.png"><img alt="../_images/icup.png" src="../_images/icup.png" style="width: 65%;" /></a>
 <p class="caption"><span class="caption-text"><a class="reference external" href="http://blog.xkcd.com/2009/09/02/urinal-protocol-vulnerability/">http://blog.xkcd.com/2009/09/02/urinal-protocol-vulnerability/</a></span></p>
 </div>
@@ -369,12 +402,15 @@ servers, so let&#8217;s initialize an IMAP4_SSL client and authenticate:</p>
 <span class="go">  22:40.32 new IMAP4 connection, tag=b&#39;KIFF&#39;</span>
 <span class="go">  22:40.38 &lt; b&#39;* OK Gimap ready for requests from 206.169.229.66 d125mb177612104oig&#39;</span>
 <span class="go">  22:40.38 &gt; b&#39;KIIF0 CAPABILITY&#39;</span>
-<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH&#39;</span>
+<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN</span>
+<span class="go">  X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH&#39;</span>
 <span class="go">  22:40.45 &lt; b&#39;KIIF0 OK Thats all she wrote! d125mb177612104oig&#39;</span>
-<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;UNSELECT&#39;, &#39;IDLE&#39;, &#39;NAMESPACE&#39;, &#39;QUOTA&#39;, &#39;ID&#39;, &#39;XLIST&#39;, &#39;CHILDREN&#39;, &#39;X-GM-EXT-1&#39;, &#39;XYZZY&#39;, &#39;SASL-IR&#39;, &#39;AUTH=XOAUTH2&#39;, &#39;AUTH=PLAIN&#39;, &#39;AUTH=PLAIN-CLIENTTOKEN&#39;, &#39;AUTH=OAUTHBEARER&#39;, &#39;AUTH=XOAUTH&#39;)</span>
+<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;UNSELECT&#39;, &#39;IDLE&#39;, &#39;NAMESPACE&#39;, &#39;QUOTA&#39;, &#39;ID&#39;,</span>
+<span class="go">  &#39;XLIST&#39;, &#39;CHILDREN&#39;, &#39;X-GM-EXT-1&#39;, &#39;XYZZY&#39;, &#39;SASL-IR&#39;, &#39;AUTH=XOAUTH2&#39;, &#39;AUTH=PLAIN&#39;, &#39;AUTH=PLAIN-CLIENTTOKEN&#39;, &#39;AUTH=OAUTHBEARER&#39;, &#39;AUTH=XOAUTH&#39;)</span>
 <span class="gp">In [5]: </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;internetpython123@gmail.com&#39;</span><span class="p">,</span> <span class="s1">&#39;123internet&#39;</span><span class="p">)</span>
 <span class="go">  22:59.92 &gt; b&#39;KIIF1 LOGIN internetpython123@gmail.com &quot;123internet&quot;&#39;</span>
-<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584&#39;</span>
+<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN</span>
+<span class="go">  X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584&#39;</span>
 <span class="go">  23:01.79 &lt; b&#39;KIIF1 ok internetpython123@gmail.com authenticated (Success)&#39;])</span>
 <span class="gh">Out[5]: </span><span class="go">(&#39;OK&#39;, [b&#39;internetpython123@gmail.com authenticated (Success)&#39;])</span>
 </pre></div>
@@ -383,45 +419,53 @@ servers, so let&#8217;s initialize an IMAP4_SSL client and authenticate:</p>
 <p>We can start by listing the mailboxes we have on the server:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">conn</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">  26:30.64 &gt; b&#39;IMKC2 LIST &quot;&quot; *&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Trash&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Drafts&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Sent&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Junk&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;INBOX&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;IMKC2 OK List completed.&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;/&quot; &quot;INBOX&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasChildren \\Noselect) &quot;/&quot; &quot;[Gmail]&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\All \\HasNoChildren ) &quot;/&quot; &quot;[Gmail]/All Mail&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\Drafts \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Drafts&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Important) &quot;/&quot; &quot;[Gmail]/Important&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Sent) &quot;/&quot; &quot;[Gmail]/Sent Mail&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Junk) &quot;/&quot; &quot;[Gmail]/Spam&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\Flagged \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Starred&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Trash) &quot;/&quot; &quot;[Gmail]/Trash&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;IMKC2 OK Success.&#39;</span>
 <span class="gh">Out[6]:</span>
 <span class="go">(&#39;OK&#39;,</span>
-<span class="go"> [b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Trash&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Drafts&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Sent&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Junk&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;INBOX&quot;&#39;])</span>
+<span class="go"> [b&#39;(\\HasNoChildren) &quot;/&quot; &quot;INBOX&quot;&#39;,</span>
+<span class="go">  b&#39;(\\HasChildren \\Noselect) &quot;/&quot; &quot;[Gmail]&quot;&#39;,</span>
+<span class="go">  b&#39;(\\All \\HasNoChildren ) &quot;/&quot; &quot;[Gmail]/All Mail&quot;&#39;,</span>
+<span class="go">  b&#39;(\\Drafts \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Drafts&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Important) &quot;/&quot; &quot;[Gmail]/Important&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Sent) &quot;/&quot; &quot;[Gmail]/Sent Mail&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Junk) &quot;/&quot; &quot;[Gmail]/Spam&quot;&#39;</span>
+<span class="go">  b&#39;(\\Flagged \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Starred&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Trash) &quot;/&quot; &quot;[Gmail]/Trash&quot;&#39;</span>
 </pre></div>
 </div>
 <p>To interact with our email, we must select a mailbox from the list we received
 earlier:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">conn</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;INBOX&#39;</span><span class="p">)</span>
-<span class="go">  27:20.96 &gt; b&#39;IMKC3 SELECT INBOX&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* FLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft)&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft \\*)] Flags permitted.&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* 1 EXISTS&#39;</span>
+<span class="go">  27:20.96 &gt; b&#39;FKFC3 SELECT INBOX&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* FLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft $NotPhishing $Phishing)&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft $NotPhishing $Phishing \\*)] Flags permitted.&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [UIDVALIDITY 1] UIDs valid&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* 4 EXISTS&#39;</span>
 <span class="go">  27:21.04 &lt; b&#39;* 0 RECENT&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [UNSEEN 1] First unseen.&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [UIDVALIDITY 1357449499] UIDs valid&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [UIDNEXT 24] Predicted next UID&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;IMKC3 OK [READ-WRITE] Select completed.&#39;</span>
-<span class="gh">Out[7]: </span><span class="go">(&#39;OK&#39;, [b&#39;1&#39;])</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [UIDNEXT 5] Predicted next UID&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [HIGHESTMODSEQ 1506]&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;FKFC3 OK [READ-WRITE] INBOX selected. (Success)&#39;</span>
+<span class="gh">Out[7]: </span><span class="go">(&#39;OK&#39;, [b&#39;4&#39;])</span>
 </pre></div>
 </div>
 <p>We can search our selected mailbox for messages matching one or more criteria.</p>
 <div class="build docutils container">
 <p>The return value is a list of bytestrings containing the UIDs of messages
 that match our search:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">conn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;(FROM &quot;cris&quot;)&#39;</span><span class="p">)</span>
-<span class="go">  28:43.02 &gt; b&#39;IMKC4 SEARCH (FROM &quot;cris&quot;)&#39;</span>
-<span class="go">  28:43.09 &lt; b&#39;* SEARCH 1&#39;</span>
-<span class="go">  28:43.09 &lt; b&#39;IMKC4 OK Search completed.&#39;</span>
-<span class="gh">Out[8]: </span><span class="go">(&#39;OK&#39;, [b&#39;1&#39;])</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">conn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;(FROM &quot;google&quot;)&#39;</span><span class="p">)</span>
+<span class="go">  28:43.02 &gt; b&#39;IGGG3 SEARCH (FROM &quot;google&quot;)&#39;</span>
+<span class="go">  28:43.09 &lt; b&#39;* SEARCH 1 2 3&#39;</span>
+<span class="go">  28:43.09 &lt; b&#39;IGGG3 OK Search completed (Success).&#39;</span>
+<span class="gh">Out[8]: </span><span class="go">(&#39;OK&#39;, [b&#39;1 2 3&#39;])</span>
 </pre></div>
 </div>
 </div>
@@ -446,6 +490,7 @@ command to read it from the server.</p>
 </div>
 <p>Python even includes an <em>email</em> library that would allow us to interact with
 this message in an <em>OO</em> style.</p>
+<p><a class="reference external" href="https://docs.python.org/3.5/library/email.html">https://docs.python.org/3.5/library/email.html</a></p>
 <div class="build docutils container">
 <em>Neat, Huh?</em></div>
 </div>
@@ -469,15 +514,21 @@ some strings</p>
 <h3>Break Time<a class="headerlink" href="#break-time" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s take a few minutes here to clear our heads.</p>
 <div class="build docutils container">
-<p>When we return, we&#8217;ll learn about the king of protocols,</p>
+<p>When we return, we&#8217;ll have lightning talks and then learn about the king of protocols,</p>
 <p class="large centered">HTTP</p>
 </div>
 </div>
 </div>
+<div class="section" id="lightning-talks">
+<h2>Lightning Talks<a class="headerlink" href="#lightning-talks" title="Permalink to this headline">¶</a></h2>
+<p>Paul Casey</p>
+<p>Thomas Johnson</p>
+<p>David Tobey</p>
+</div>
 <div class="section" id="http">
 <h2>HTTP<a class="headerlink" href="#http" title="Permalink to this headline">¶</a></h2>
 <div class="left docutils container">
-<p>HTTP is no different</p>
+<p>HTTP is no different than the protocols we looked at earlier</p>
 <div class="build docutils container">
 <p>HTTP is also message-centered, with two-way communications:</p>
 <ul class="build simple">
@@ -1184,103 +1235,25 @@ returns a <code class="docutils literal"><span class="pre">500</span> <span clas
 the file and return the results as HTML.</li>
 </ul>
 </div>
+<div class="section" id="next-week">
+<h3>Next Week<a class="headerlink" href="#next-week" title="Permalink to this headline">¶</a></h3>
+<p>Session 3:</p>
+<p>Lightning Talks:</p>
+<p>Paul Briant</p>
+<p>Deana Holmer</p>
+<p>Charles Robinson</p>
+<p>Session 3:</p>
+<p>CGI, WSGI and Living Online</p>
+</div>
 </div>
 </div>
 
 
           </div>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Session 02</a><ul>
-<li><a class="reference internal" href="#the-languages-computers-speak">The Languages Computers Speak</a><ul>
-<li><a class="reference internal" href="#but-first">But First</a></li>
-<li><a class="reference internal" href="#what-is-a-protocol">What is a Protocol?</a></li>
-<li><a class="reference internal" href="#real-protocol-examples">Real Protocol Examples</a></li>
-<li><a class="reference internal" href="#smtp">SMTP</a></li>
-<li><a class="reference internal" href="#pop3">POP3</a></li>
-<li><a class="reference internal" href="#imap">IMAP</a></li>
-<li><a class="reference internal" href="#using-imap-in-python">Using IMAP in Python</a></li>
-<li><a class="reference internal" href="#what-have-we-learned">What Have We Learned?</a></li>
-<li><a class="reference internal" href="#break-time">Break Time</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#http">HTTP</a><ul>
-<li><a class="reference internal" href="#what-does-http-look-like">What does HTTP look like?</a></li>
-<li><a class="reference internal" href="#implementing-http">Implementing HTTP</a></li>
-<li><a class="reference internal" href="#step-1-basic-http-protocol">Step 1: Basic HTTP Protocol</a></li>
-<li><a class="reference internal" href="#step-2-handling-http-methods">Step 2: Handling HTTP Methods</a></li>
-<li><a class="reference internal" href="#step-3-error-responses">Step 3: Error Responses</a></li>
-<li><a class="reference internal" href="#step-4-serving-resources">Step 4: Serving Resources</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#homework">Homework</a><ul>
-<li><a class="reference internal" href="#one-step-at-a-time">One Step At A Time</a></li>
-<li><a class="reference internal" href="#http-headers">HTTP Headers</a></li>
-<li><a class="reference internal" href="#id1">HTTP Headers</a></li>
-<li><a class="reference internal" href="#content-type-header">Content-Type Header</a></li>
-<li><a class="reference internal" href="#mapping-mime-types">Mapping Mime-types</a></li>
-<li><a class="reference internal" href="#resolving-a-uri">Resolving a URI</a></li>
-<li><a class="reference internal" href="#use-your-tests">Use Your Tests</a></li>
-<li><a class="reference internal" href="#submitting-your-homework">Submitting Your Homework</a></li>
-<li><a class="reference internal" href="#a-few-steps-further">A Few Steps Further</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="session01.html"
-                        title="previous chapter">Session 01</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="session03.html"
-                        title="next chapter">Session 03</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/presentations/session02.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-  <h3>Slides</h3>
-  <ul class="this-page-menu">
-    <li><a href="../.././slides\presentations/session02.html"
-           rel="nofollow">View as slides</a></li>
-  </ul>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+      </div><generator object macro at 0x0000027E2DCD81A8>
       <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="session03.html" title="Session 03"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="session01.html" title="Session 01"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
-      </ul>
-    </div>
+    </div><generator object macro at 0x0000027E2DCC9EB8>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
