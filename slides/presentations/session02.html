@@ -98,7 +98,7 @@ URL: https://code.google.com/p/io-2012-slides
       <div class="build left docutils container">
 <p>Programming languages like Python are the languages we speak to computers.</p>
 <p><em>Protocols</em> are the languages that computers speak to each-other.</p>
-<p>This sesson we'll look at a few of them and</p>
+<p>This session we'll look at a few of them and</p>
 <ul class="build simple">
 <li>Learn what makes them similar</li>
 <li>Learn what makes them different</li>
@@ -118,7 +118,20 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>But First</h3>
     </hgroup>
     <article class="">
-      <p class="large centered">Questions from last week's material</p>
+      <div class="build left docutils container">
+<p>Agenda:</p>
+<ul class="build simple">
+<li>Review of last week</li>
+<li>Everyone have what they need (working Python, google group, Slack?)</li>
+<li>Questions on last week's material</li>
+<li>Go over homework</li>
+<li>Intro to Protocols</li>
+<li>Break</li>
+<li>Lightning Talks (Paul Casey, Thomas Johnson, David Tobey)</li>
+<li>Writing HTTP</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div>
 
 
 
@@ -126,7 +139,114 @@ URL: https://code.google.com/p/io-2012-slides
 
 
     </article>
-  </slide>  <slide class="level-3" id="id4">
+  </slide>  <slide class="level-3" id="id5">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large centered">Review</p>
+
+
+
+<div class="slide-no">4</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id6">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="build left">Requirements to pass the course</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Attend &gt;= 8 sessions</li>
+<li>Show us your Django app at the end of the course</li>
+<li>1 Lightning Talk</li>
+</ul>
+</div></blockquote>
+
+
+
+<div class="slide-no">5</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id7">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="build left">Not required by encouraged</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Weekly homework</li>
+<li>Class participation</li>
+<li>Help classmates in the Slack channel</li>
+</ul>
+</div></blockquote>
+
+
+
+<div class="slide-no">6</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id8">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large centered">Questions from last week's material</p>
+
+
+
+<div class="slide-no">7</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id9">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/socket_docs.PNG"><img alt="../_images/socket_docs.PNG" src="../_images/socket_docs.PNG" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-text">Socket Docs: <a class="reference external" href="https://docs.python.org/3.5/library/socket.html#socket.getdefaulttimeout">https://docs.python.org/3.5/library/socket.html#socket.getdefaulttimeout</a></span></p>
+</div>
+
+
+
+<div class="slide-no">8</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id10">
+    <hgroup>
+      <h3>Side note on default parameters</h3>
+    </hgroup>
+    <article class="">
+      <div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="sd">&quot;&quot;&quot;returns the text, which is &#39;hello&#39; by default&quot;&quot;&quot;</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">text</span>
+<span class="gp">   ....:</span>
+<span class="gp">In [2]: </span><span class="n">hello</span><span class="p">()</span>
+<span class="go">Out [2]: &#39;hello&#39;</span>
+
+<span class="gp">In [3]: </span><span class="n">hello</span><span class="p">(</span><span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+<span class="go">Out [3]: &#39;hi&#39;</span>
+</pre></div>
+</div>
+</div>
+
+
+
+<div class="slide-no">9</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id11">
     <hgroup>
       <h3>A quick utility method</h3>
     </hgroup>
@@ -148,11 +268,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">4</div>
+<div class="slide-no">10</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id5">
+  </slide>  <slide class="level-3" id="id12">
     <hgroup>
       <h3>A quick utility method</h3>
     </hgroup>
@@ -172,20 +292,33 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">5</div>
+<div class="slide-no">11</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id6">
+  </slide>  <slide class="level-3" id="id13">
     <hgroup>
       <h3>But First</h3>
     </hgroup>
     <article class="">
-      <p class="large centered">Examples of an echo server using <code class="docutils literal"><span class="pre">select</span></code></p>
+      <p class="large centered">Let's go over the homework</p>
 
 
 
-<div class="slide-no">6</div>
+<div class="slide-no">12</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id14">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large centered">On to Protocol!</p>
+
+
+
+<div class="slide-no">13</div>
 
 
     </article>
@@ -201,11 +334,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">14</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id7">
+  </slide>  <slide class="level-3" id="id15">
     <hgroup>
       <h3>Protocols IRL</h3>
     </hgroup>
@@ -221,27 +354,27 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">15</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id8">
+  </slide>  <slide class="level-3" id="id16">
     <hgroup>
       <h3>Protocols IRL</h3>
     </hgroup>
     <article class="">
-      <div class="figure align-center" id="id3">
+      <div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/icup.png"><img alt="../_images/icup.png" src="../_images/icup.png" style="width: 65%;" /></a>
 <p class="caption"><span class="caption-text"><a class="reference external" href="http://blog.xkcd.com/2009/09/02/urinal-protocol-vulnerability/">http://blog.xkcd.com/2009/09/02/urinal-protocol-vulnerability/</a></span></p>
 </div>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">16</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id9">
+  </slide>  <slide class="level-3" id="id17">
     <hgroup>
       <h3>Protocols In Computers</h3>
     </hgroup>
@@ -257,7 +390,7 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">17</div>
 
 
     </article>
@@ -280,11 +413,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">18</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id10">
+  </slide>  <slide class="level-3" id="id18">
     <hgroup>
       <h3>A Word on Typography</h3>
     </hgroup>
@@ -299,7 +432,7 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">12</div>
+<div class="slide-no">19</div>
 
 
     </article>
@@ -324,11 +457,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">13</div>
+<div class="slide-no">20</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id11">
+  </slide>  <slide class="level-3" id="id19">
     <hgroup>
       <h3>SMTP</h3>
     </hgroup>
@@ -352,11 +485,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">14</div>
+<div class="slide-no">21</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id12">
+  </slide>  <slide class="level-3" id="id20">
     <hgroup>
       <h3>SMTP</h3>
     </hgroup>
@@ -370,11 +503,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">15</div>
+<div class="slide-no">22</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id13">
+  </slide>  <slide class="level-3" id="id21">
     <hgroup>
       <h3>SMTP Characteristics</h3>
     </hgroup>
@@ -390,7 +523,7 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">16</div>
+<div class="slide-no">23</div>
 
 
     </article>
@@ -414,11 +547,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">17</div>
+<div class="slide-no">24</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id14">
+  </slide>  <slide class="level-3" id="id22">
     <hgroup>
       <h3>POP3</h3>
     </hgroup>
@@ -436,11 +569,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">18</div>
+<div class="slide-no">25</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id15">
+  </slide>  <slide class="level-3" id="id23">
     <hgroup>
       <h3>POP3</h3>
     </hgroup>
@@ -458,11 +591,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">19</div>
+<div class="slide-no">26</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id16">
+  </slide>  <slide class="level-3" id="id24">
     <hgroup>
       <h3>POP3</h3>
     </hgroup>
@@ -477,11 +610,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">20</div>
+<div class="slide-no">27</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id17">
+  </slide>  <slide class="level-3" id="id25">
     <hgroup>
       <h3>POP3 Characteristics</h3>
     </hgroup>
@@ -499,11 +632,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">21</div>
+<div class="slide-no">28</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id18">
+  </slide>  <slide class="level-3" id="id26">
     <hgroup>
       <h3>One Other Difference</h3>
     </hgroup>
@@ -518,7 +651,7 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">22</div>
+<div class="slide-no">29</div>
 
 
     </article>
@@ -540,11 +673,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">23</div>
+<div class="slide-no">30</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id19">
+  </slide>  <slide class="level-3" id="id27">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -562,11 +695,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">24</div>
+<div class="slide-no">31</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id20">
+  </slide>  <slide class="level-3" id="id28">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -581,11 +714,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">25</div>
+<div class="slide-no">32</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id21">
+  </slide>  <slide class="level-3" id="id29">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -602,11 +735,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">26</div>
+<div class="slide-no">33</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id22">
+  </slide>  <slide class="level-3" id="id30">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -624,11 +757,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">27</div>
+<div class="slide-no">34</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id23">
+  </slide>  <slide class="level-3" id="id31">
     <hgroup>
       <h3>IMAP</h3>
     </hgroup>
@@ -644,11 +777,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">28</div>
+<div class="slide-no">35</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id24">
+  </slide>  <slide class="level-3" id="id32">
     <hgroup>
       <h3>IMAP Characteristics</h3>
     </hgroup>
@@ -662,11 +795,11 @@ single argument, the shared prefix for a defined set of constants:</p>
 
 
 
-<div class="slide-no">29</div>
+<div class="slide-no">36</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id25">
+  </slide>  <slide class="level-3" id="id33">
     <hgroup>
       <h3>IMAP Differences</h3>
     </hgroup>
@@ -682,7 +815,7 @@ sequence</li>
 
 
 
-<div class="slide-no">30</div>
+<div class="slide-no">37</div>
 
 
     </article>
@@ -699,11 +832,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">31</div>
+<div class="slide-no">38</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id26">
+  </slide>  <slide class="level-3" id="id34">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -727,11 +860,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">32</div>
+<div class="slide-no">39</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id27">
+  </slide>  <slide class="level-3" id="id35">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -740,11 +873,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">33</div>
+<div class="slide-no">40</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id28">
+  </slide>  <slide class="level-3" id="id36">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -755,11 +888,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">34</div>
+<div class="slide-no">41</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id29">
+  </slide>  <slide class="level-3" id="id37">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -770,11 +903,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">35</div>
+<div class="slide-no">42</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id30">
+  </slide>  <slide class="level-3" id="id38">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -783,11 +916,11 @@ Fire up your python interpreters and prepare to type.</div>
 
 
 
-<div class="slide-no">36</div>
+<div class="slide-no">43</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id31">
+  </slide>  <slide class="level-3" id="id39">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -800,12 +933,15 @@ servers, so let's initialize an IMAP4_SSL client and authenticate:</p>
 <span class="go">  22:40.32 new IMAP4 connection, tag=b&#39;KIFF&#39;</span>
 <span class="go">  22:40.38 &lt; b&#39;* OK Gimap ready for requests from 206.169.229.66 d125mb177612104oig&#39;</span>
 <span class="go">  22:40.38 &gt; b&#39;KIIF0 CAPABILITY&#39;</span>
-<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH&#39;</span>
+<span class="go">  22:40.45 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN</span>
+<span class="go">  X-GM-EXT-1 XYZZY SASL-IR AUTH=XOAUTH2 AUTH=PLAIN AUTH=PLAIN-CLIENTTOKEN AUTH=OAUTHBEARER AUTH=XOAUTH&#39;</span>
 <span class="go">  22:40.45 &lt; b&#39;KIIF0 OK Thats all she wrote! d125mb177612104oig&#39;</span>
-<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;UNSELECT&#39;, &#39;IDLE&#39;, &#39;NAMESPACE&#39;, &#39;QUOTA&#39;, &#39;ID&#39;, &#39;XLIST&#39;, &#39;CHILDREN&#39;, &#39;X-GM-EXT-1&#39;, &#39;XYZZY&#39;, &#39;SASL-IR&#39;, &#39;AUTH=XOAUTH2&#39;, &#39;AUTH=PLAIN&#39;, &#39;AUTH=PLAIN-CLIENTTOKEN&#39;, &#39;AUTH=OAUTHBEARER&#39;, &#39;AUTH=XOAUTH&#39;)</span>
+<span class="go">  22:40.45 CAPABILITIES: (&#39;IMAP4REV1&#39;, &#39;UNSELECT&#39;, &#39;IDLE&#39;, &#39;NAMESPACE&#39;, &#39;QUOTA&#39;, &#39;ID&#39;,</span>
+<span class="go">  &#39;XLIST&#39;, &#39;CHILDREN&#39;, &#39;X-GM-EXT-1&#39;, &#39;XYZZY&#39;, &#39;SASL-IR&#39;, &#39;AUTH=XOAUTH2&#39;, &#39;AUTH=PLAIN&#39;, &#39;AUTH=PLAIN-CLIENTTOKEN&#39;, &#39;AUTH=OAUTHBEARER&#39;, &#39;AUTH=XOAUTH&#39;)</span>
 <span class="gp">In [5]: </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">&#39;internetpython123@gmail.com&#39;</span><span class="p">,</span> <span class="s1">&#39;123internet&#39;</span><span class="p">)</span>
 <span class="go">  22:59.92 &gt; b&#39;KIIF1 LOGIN internetpython123@gmail.com &quot;123internet&quot;&#39;</span>
-<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584&#39;</span>
+<span class="go">  23:01.79 &lt; b&#39;* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN</span>
+<span class="go">  X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT LIST-EXTENDED LIST-STATUS LITERAL-APPENDLIMIT=35651584&#39;</span>
 <span class="go">  23:01.79 &lt; b&#39;KIIF1 ok internetpython123@gmail.com authenticated (Success)&#39;])</span>
 <span class="gh">Out[5]: </span><span class="go">(&#39;OK&#39;, [b&#39;internetpython123@gmail.com authenticated (Success)&#39;])</span>
 </pre></div>
@@ -814,11 +950,11 @@ servers, so let's initialize an IMAP4_SSL client and authenticate:</p>
 
 
 
-<div class="slide-no">37</div>
+<div class="slide-no">44</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id32">
+  </slide>  <slide class="level-3" id="id40">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -826,29 +962,37 @@ servers, so let's initialize an IMAP4_SSL client and authenticate:</p>
       <p>We can start by listing the mailboxes we have on the server:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">conn</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="go">  26:30.64 &gt; b&#39;IMKC2 LIST &quot;&quot; *&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Trash&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Drafts&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Sent&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;Junk&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;.&quot; &quot;INBOX&quot;&#39;</span>
-<span class="go">  26:30.72 &lt; b&#39;IMKC2 OK List completed.&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren) &quot;/&quot; &quot;INBOX&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasChildren \\Noselect) &quot;/&quot; &quot;[Gmail]&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\All \\HasNoChildren ) &quot;/&quot; &quot;[Gmail]/All Mail&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\Drafts \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Drafts&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Important) &quot;/&quot; &quot;[Gmail]/Important&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Sent) &quot;/&quot; &quot;[Gmail]/Sent Mail&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Junk) &quot;/&quot; &quot;[Gmail]/Spam&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\Flagged \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Starred&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;* LIST (\\HasNoChildren \\Trash) &quot;/&quot; &quot;[Gmail]/Trash&quot;&#39;</span>
+<span class="go">  26:30.72 &lt; b&#39;IMKC2 OK Success.&#39;</span>
 <span class="gh">Out[6]:</span>
 <span class="go">(&#39;OK&#39;,</span>
-<span class="go"> [b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Trash&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Drafts&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Sent&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;Junk&quot;&#39;,</span>
-<span class="go">  b&#39;(\\HasNoChildren) &quot;.&quot; &quot;INBOX&quot;&#39;])</span>
+<span class="go"> [b&#39;(\\HasNoChildren) &quot;/&quot; &quot;INBOX&quot;&#39;,</span>
+<span class="go">  b&#39;(\\HasChildren \\Noselect) &quot;/&quot; &quot;[Gmail]&quot;&#39;,</span>
+<span class="go">  b&#39;(\\All \\HasNoChildren ) &quot;/&quot; &quot;[Gmail]/All Mail&quot;&#39;,</span>
+<span class="go">  b&#39;(\\Drafts \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Drafts&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Important) &quot;/&quot; &quot;[Gmail]/Important&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Sent) &quot;/&quot; &quot;[Gmail]/Sent Mail&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Junk) &quot;/&quot; &quot;[Gmail]/Spam&quot;&#39;</span>
+<span class="go">  b&#39;(\\Flagged \\HasNoChildren) &quot;/&quot; &quot;[Gmail]/Starred&quot;&#39;</span>
+<span class="go">  b&#39;(\\HasNoChildren \\Trash) &quot;/&quot; &quot;[Gmail]/Trash&quot;&#39;</span>
 </pre></div>
 </div>
 
 
 
-<div class="slide-no">38</div>
+<div class="slide-no">45</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id33">
+  </slide>  <slide class="level-3" id="id41">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -856,26 +1000,26 @@ servers, so let's initialize an IMAP4_SSL client and authenticate:</p>
       <p>To interact with our email, we must select a mailbox from the list we received
 earlier:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">conn</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;INBOX&#39;</span><span class="p">)</span>
-<span class="go">  27:20.96 &gt; b&#39;IMKC3 SELECT INBOX&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* FLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft)&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft \\*)] Flags permitted.&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* 1 EXISTS&#39;</span>
+<span class="go">  27:20.96 &gt; b&#39;FKFC3 SELECT INBOX&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* FLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft $NotPhishing $Phishing)&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Deleted \\Seen \\Draft $NotPhishing $Phishing \\*)] Flags permitted.&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [UIDVALIDITY 1] UIDs valid&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* 4 EXISTS&#39;</span>
 <span class="go">  27:21.04 &lt; b&#39;* 0 RECENT&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [UNSEEN 1] First unseen.&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [UIDVALIDITY 1357449499] UIDs valid&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;* OK [UIDNEXT 24] Predicted next UID&#39;</span>
-<span class="go">  27:21.04 &lt; b&#39;IMKC3 OK [READ-WRITE] Select completed.&#39;</span>
-<span class="gh">Out[7]: </span><span class="go">(&#39;OK&#39;, [b&#39;1&#39;])</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [UIDNEXT 5] Predicted next UID&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;* OK [HIGHESTMODSEQ 1506]&#39;</span>
+<span class="go">  27:21.04 &lt; b&#39;FKFC3 OK [READ-WRITE] INBOX selected. (Success)&#39;</span>
+<span class="gh">Out[7]: </span><span class="go">(&#39;OK&#39;, [b&#39;4&#39;])</span>
 </pre></div>
 </div>
 
 
 
-<div class="slide-no">39</div>
+<div class="slide-no">46</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id34">
+  </slide>  <slide class="level-3" id="id42">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -884,22 +1028,22 @@ earlier:</p>
 <div class="build docutils container">
 <p>The return value is a list of bytestrings containing the UIDs of messages
 that match our search:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">conn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;(FROM &quot;cris&quot;)&#39;</span><span class="p">)</span>
-<span class="go">  28:43.02 &gt; b&#39;IMKC4 SEARCH (FROM &quot;cris&quot;)&#39;</span>
-<span class="go">  28:43.09 &lt; b&#39;* SEARCH 1&#39;</span>
-<span class="go">  28:43.09 &lt; b&#39;IMKC4 OK Search completed.&#39;</span>
-<span class="gh">Out[8]: </span><span class="go">(&#39;OK&#39;, [b&#39;1&#39;])</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">conn</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;(FROM &quot;google&quot;)&#39;</span><span class="p">)</span>
+<span class="go">  28:43.02 &gt; b&#39;IGGG3 SEARCH (FROM &quot;google&quot;)&#39;</span>
+<span class="go">  28:43.09 &lt; b&#39;* SEARCH 1 2 3&#39;</span>
+<span class="go">  28:43.09 &lt; b&#39;IGGG3 OK Search completed (Success).&#39;</span>
+<span class="gh">Out[8]: </span><span class="go">(&#39;OK&#39;, [b&#39;1 2 3&#39;])</span>
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">40</div>
+<div class="slide-no">47</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id35">
+  </slide>  <slide class="level-3" id="id43">
     <hgroup>
       <h3>Using IMAP in Python</h3>
     </hgroup>
@@ -926,23 +1070,24 @@ command to read it from the server.</p>
 
 
 
-<div class="slide-no">41</div>
+<div class="slide-no">48</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id36">
+  </slide>  <slide class="level-3" id="id44">
     <hgroup>
       <h3>Batteries Included</h3>
     </hgroup>
     <article class="">
       <p>Python even includes an <em>email</em> library that would allow us to interact with
 this message in an <em>OO</em> style.</p>
+<p><a class="reference external" href="https://docs.python.org/3.5/library/email.html">https://docs.python.org/3.5/library/email.html</a></p>
 <div class="build docutils container">
 <em>Neat, Huh?</em></div>
 
 
 
-<div class="slide-no">42</div>
+<div class="slide-no">49</div>
 
 
     </article>
@@ -967,7 +1112,7 @@ some strings</p>
 
 
 
-<div class="slide-no">43</div>
+<div class="slide-no">50</div>
 
 
     </article>
@@ -978,13 +1123,28 @@ some strings</p>
     <article class="">
       <p>Let's take a few minutes here to clear our heads.</p>
 <div class="build docutils container">
-<p>When we return, we'll learn about the king of protocols,</p>
+<p>When we return, we'll have lightning talks and then learn about the king of protocols,</p>
 <p class="large centered">HTTP</p>
 </div>
 
 
 
-<div class="slide-no">44</div>
+<div class="slide-no">51</div>
+
+
+    </article>
+  </slide>  <slide class="level-2" id="lightning-talks">
+    <hgroup>
+      <h2>Lightning Talks</h2>
+    </hgroup>
+    <article class="">
+      <p>Paul Casey</p>
+<p>Thomas Johnson</p>
+<p>David Tobey</p>
+
+
+
+<div class="slide-no">52</div>
 
 
     </article>
@@ -994,7 +1154,7 @@ some strings</p>
     </hgroup>
     <article class="">
       <div class="left docutils container">
-<p>HTTP is no different</p>
+<p>HTTP is no different than the protocols we looked at earlier</p>
 <div class="build docutils container">
 <p>HTTP is also message-centered, with two-way communications:</p>
 <ul class="build simple">
@@ -1006,7 +1166,7 @@ some strings</p>
 
 
 
-<div class="slide-no">45</div>
+<div class="slide-no">53</div>
 
 
     </article>
@@ -1026,11 +1186,11 @@ character sequence.</p>
 
 
 
-<div class="slide-no">46</div>
+<div class="slide-no">54</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id37">
+  </slide>  <slide class="level-3" id="id45">
     <hgroup>
       <h3>What does HTTP look like?</h3>
     </hgroup>
@@ -1053,11 +1213,11 @@ Content-Type: text/html; charset=UTF-8
 
 
 
-<div class="slide-no">47</div>
+<div class="slide-no">55</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id38">
+  </slide>  <slide class="level-3" id="id46">
     <hgroup>
       <h3>HTTP Core Format</h3>
     </hgroup>
@@ -1073,7 +1233,7 @@ Content-Type: text/html; charset=UTF-8
 
 
 
-<div class="slide-no">48</div>
+<div class="slide-no">56</div>
 
 
     </article>
@@ -1093,11 +1253,11 @@ the rest of the session</p>
 
 
 
-<div class="slide-no">49</div>
+<div class="slide-no">57</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id39">
+  </slide>  <slide class="level-3" id="id47">
     <hgroup>
       <h3>TDD IRL (a quick aside)</h3>
     </hgroup>
@@ -1113,11 +1273,11 @@ assignment.</p>
 
 
 
-<div class="slide-no">50</div>
+<div class="slide-no">58</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id40">
+  </slide>  <slide class="level-3" id="id48">
     <hgroup>
       <h3>Run the Tests</h3>
     </hgroup>
@@ -1138,11 +1298,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">51</div>
+<div class="slide-no">59</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id41">
+  </slide>  <slide class="level-3" id="id49">
     <hgroup>
       <h3>Viewing an HTTP Request</h3>
     </hgroup>
@@ -1158,11 +1318,11 @@ server, let's use a web browser!</p>
 
 
 
-<div class="slide-no">52</div>
+<div class="slide-no">60</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id42">
+  </slide>  <slide class="level-3" id="id50">
     <hgroup>
       <h3>A Bad Interaction</h3>
     </hgroup>
@@ -1181,11 +1341,11 @@ expecting it.</p>
 
 
 
-<div class="slide-no">53</div>
+<div class="slide-no">61</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id43">
+  </slide>  <slide class="level-3" id="id51">
     <hgroup>
       <h3>Echoing A Request</h3>
     </hgroup>
@@ -1211,11 +1371,11 @@ Request</em> as sent by your browser.</p>
 
 
 
-<div class="slide-no">54</div>
+<div class="slide-no">62</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id44">
+  </slide>  <slide class="level-3" id="id52">
     <hgroup>
       <h3>HTTP Debugging</h3>
     </hgroup>
@@ -1236,11 +1396,11 @@ headers and all. Very useful.</p>
 
 
 
-<div class="slide-no">55</div>
+<div class="slide-no">63</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id45">
+  </slide>  <slide class="level-3" id="id53">
     <hgroup>
       <h3>Stop! Demo Time</h3>
     </hgroup>
@@ -1249,11 +1409,11 @@ headers and all. Very useful.</p>
 
 
 
-<div class="slide-no">56</div>
+<div class="slide-no">64</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id46">
+  </slide>  <slide class="level-3" id="id54">
     <hgroup>
       <h3>Other Debugging Options</h3>
     </hgroup>
@@ -1274,7 +1434,7 @@ when you have the time.</p>
 
 
 
-<div class="slide-no">57</div>
+<div class="slide-no">65</div>
 
 
     </article>
@@ -1300,11 +1460,11 @@ Host: www.mysite1.com:80&lt;CRLF&gt;
 
 
 
-<div class="slide-no">58</div>
+<div class="slide-no">66</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id47">
+  </slide>  <slide class="level-3" id="id55">
     <hgroup>
       <h3>HTTP Responses</h3>
     </hgroup>
@@ -1324,11 +1484,11 @@ this is a pretty minimal response
 
 
 
-<div class="slide-no">59</div>
+<div class="slide-no">67</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id48">
+  </slide>  <slide class="level-3" id="id56">
     <hgroup>
       <h3>Returning a Canned HTTP Response</h3>
     </hgroup>
@@ -1351,11 +1511,11 @@ this is a pretty minimal response
 
 
 
-<div class="slide-no">60</div>
+<div class="slide-no">68</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id49">
+  </slide>  <slide class="level-3" id="id57">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1374,11 +1534,11 @@ this is a pretty minimal response
 
 
 
-<div class="slide-no">61</div>
+<div class="slide-no">69</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id50">
+  </slide>  <slide class="level-3" id="id58">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1399,11 +1559,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">62</div>
+<div class="slide-no">70</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id51">
+  </slide>  <slide class="level-3" id="id59">
     <hgroup>
       <h3>Server Modifications</h3>
     </hgroup>
@@ -1421,11 +1581,11 @@ for HTTP traffic, say 1024.</p>
 
 
 
-<div class="slide-no">63</div>
+<div class="slide-no">71</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id52">
+  </slide>  <slide class="level-3" id="id60">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1452,11 +1612,11 @@ for HTTP traffic, say 1024.</p>
 
 
 
-<div class="slide-no">64</div>
+<div class="slide-no">72</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id53">
+  </slide>  <slide class="level-3" id="id61">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1480,7 +1640,7 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">65</div>
+<div class="slide-no">73</div>
 
 
     </article>
@@ -1501,11 +1661,11 @@ three parts:</p>
 
 
 
-<div class="slide-no">66</div>
+<div class="slide-no">74</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id54">
+  </slide>  <slide class="level-3" id="id62">
     <hgroup>
       <h3>HTTP Methods</h3>
     </hgroup>
@@ -1525,11 +1685,11 @@ three parts:</p>
 
 
 
-<div class="slide-no">67</div>
+<div class="slide-no">75</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id55">
+  </slide>  <slide class="level-3" id="id63">
     <hgroup>
       <h3>HTTP Methods</h3>
     </hgroup>
@@ -1545,11 +1705,11 @@ storage:</p>
 
 
 
-<div class="slide-no">68</div>
+<div class="slide-no">76</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id56">
+  </slide>  <slide class="level-3" id="id64">
     <hgroup>
       <h3>Methods: Safe &lt;--&gt; Unsafe</h3>
     </hgroup>
@@ -1574,11 +1734,11 @@ they might change something on the server:</p>
 
 
 
-<div class="slide-no">69</div>
+<div class="slide-no">77</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id57">
+  </slide>  <slide class="level-3" id="id65">
     <hgroup>
       <h3>Methods: Idempotent &lt;--&gt; ???</h3>
     </hgroup>
@@ -1603,11 +1763,11 @@ they might change something on the server:</p>
 
 
 
-<div class="slide-no">70</div>
+<div class="slide-no">78</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id58">
+  </slide>  <slide class="level-3" id="id66">
     <hgroup>
       <h3>HTTP Method Handling</h3>
     </hgroup>
@@ -1623,11 +1783,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">71</div>
+<div class="slide-no">79</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id59">
+  </slide>  <slide class="level-3" id="id67">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1643,11 +1803,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">72</div>
+<div class="slide-no">80</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id60">
+  </slide>  <slide class="level-3" id="id68">
     <hgroup>
       <h3>Update the Server</h3>
     </hgroup>
@@ -1661,11 +1821,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">73</div>
+<div class="slide-no">81</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id61">
+  </slide>  <slide class="level-3" id="id69">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1693,11 +1853,11 @@ here is the first line</p>
 
 
 
-<div class="slide-no">74</div>
+<div class="slide-no">82</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id62">
+  </slide>  <slide class="level-3" id="id70">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1718,11 +1878,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">75</div>
+<div class="slide-no">83</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id63">
+  </slide>  <slide class="level-3" id="id71">
     <hgroup>
       <h3>What About a Browser?</h3>
     </hgroup>
@@ -1742,7 +1902,7 @@ error condition.  In a second terminal window run the script like so:</p>
 
 
 
-<div class="slide-no">76</div>
+<div class="slide-no">84</div>
 
 
     </article>
@@ -1761,11 +1921,11 @@ our server has terminated as well.</p>
 
 
 
-<div class="slide-no">77</div>
+<div class="slide-no">85</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id64">
+  </slide>  <slide class="level-3" id="id72">
     <hgroup>
       <h3>HTTP Response Codes</h3>
     </hgroup>
@@ -1786,11 +1946,11 @@ the request.</p>
 
 
 
-<div class="slide-no">78</div>
+<div class="slide-no">86</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id65">
+  </slide>  <slide class="level-3" id="id73">
     <hgroup>
       <h3>Common Response Codes</h3>
     </hgroup>
@@ -1812,11 +1972,11 @@ There are a lot of them for a reason.</p>
 
 
 
-<div class="slide-no">79</div>
+<div class="slide-no">87</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id66">
+  </slide>  <slide class="level-3" id="id74">
     <hgroup>
       <h3>Handling our Error</h3>
     </hgroup>
@@ -1832,11 +1992,11 @@ There are a lot of them for a reason.</p>
 
 
 
-<div class="slide-no">80</div>
+<div class="slide-no">88</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id67">
+  </slide>  <slide class="level-3" id="id75">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1852,11 +2012,11 @@ There are a lot of them for a reason.</p>
 
 
 
-<div class="slide-no">81</div>
+<div class="slide-no">89</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id68">
+  </slide>  <slide class="level-3" id="id76">
     <hgroup>
       <h3>Server Updates</h3>
     </hgroup>
@@ -1872,11 +2032,11 @@ correctly.  It should</p>
 
 
 
-<div class="slide-no">82</div>
+<div class="slide-no">90</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id69">
+  </slide>  <slide class="level-3" id="id77">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -1903,11 +2063,11 @@ correctly.  It should</p>
 
 
 
-<div class="slide-no">83</div>
+<div class="slide-no">91</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id70">
+  </slide>  <slide class="level-3" id="id78">
     <hgroup>
       <h3>Run The Tests</h3>
     </hgroup>
@@ -1928,7 +2088,7 @@ now.</p>
 
 
 
-<div class="slide-no">84</div>
+<div class="slide-no">92</div>
 
 
     </article>
@@ -1956,11 +2116,11 @@ But what happens if we make a different request?</p>
 
 
 
-<div class="slide-no">85</div>
+<div class="slide-no">93</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id71">
+  </slide>  <slide class="level-3" id="id79">
     <hgroup>
       <h3>Determining a Resource</h3>
     </hgroup>
@@ -1976,11 +2136,11 @@ request.</p>
 
 
 
-<div class="slide-no">86</div>
+<div class="slide-no">94</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id72">
+  </slide>  <slide class="level-3" id="id80">
     <hgroup>
       <h3>HTTP Requests: URI</h3>
     </hgroup>
@@ -2001,11 +2161,11 @@ be returned</li>
 
 
 
-<div class="slide-no">87</div>
+<div class="slide-no">95</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id73">
+  </slide>  <slide class="level-3" id="id81">
     <hgroup>
       <h3>Parsing a Request</h3>
     </hgroup>
@@ -2019,11 +2179,11 @@ line of a request</p>
 
 
 
-<div class="slide-no">88</div>
+<div class="slide-no">96</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id74">
+  </slide>  <slide class="level-3" id="id82">
     <hgroup>
       <h3>My Solution</h3>
     </hgroup>
@@ -2041,11 +2201,11 @@ line of a request</p>
 
 
 
-<div class="slide-no">89</div>
+<div class="slide-no">97</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id75">
+  </slide>  <slide class="level-3" id="id83">
     <hgroup>
       <h3>Pass It Along</h3>
     </hgroup>
@@ -2072,7 +2232,7 @@ line of a request</p>
 
 
 
-<div class="slide-no">90</div>
+<div class="slide-no">98</div>
 
 
     </article>
@@ -2101,7 +2261,7 @@ let the server run.</p>
 
 
 
-<div class="slide-no">91</div>
+<div class="slide-no">99</div>
 
 
     </article>
@@ -2128,7 +2288,7 @@ by the protocol</li>
 
 
 
-<div class="slide-no">92</div>
+<div class="slide-no">100</div>
 
 
     </article>
@@ -2148,7 +2308,7 @@ as part of the response.</p>
 
 
 
-<div class="slide-no">93</div>
+<div class="slide-no">101</div>
 
 
     </article>
@@ -2171,7 +2331,7 @@ value for the previous header</li>
 
 
 
-<div class="slide-no">94</div>
+<div class="slide-no">102</div>
 
 
     </article>
@@ -2196,7 +2356,7 @@ client what to expect.</p>
 
 
 
-<div class="slide-no">95</div>
+<div class="slide-no">103</div>
 
 
     </article>
@@ -2221,7 +2381,7 @@ extension to a type:</p>
 
 
 
-<div class="slide-no">96</div>
+<div class="slide-no">104</div>
 
 
     </article>
@@ -2245,7 +2405,7 @@ that the server can catch to return a 404 response.</li>
 
 
 
-<div class="slide-no">97</div>
+<div class="slide-no">105</div>
 
 
     </article>
@@ -2265,7 +2425,7 @@ completed the assignment.</p>
 
 
 
-<div class="slide-no">98</div>
+<div class="slide-no">106</div>
 
 
     </article>
@@ -2288,7 +2448,7 @@ it there, and then close the pull request.</p>
 
 
 
-<div class="slide-no">99</div>
+<div class="slide-no">107</div>
 
 
     </article>
@@ -2313,7 +2473,38 @@ the file and return the results as HTML.</li>
 
 
 
-<div class="slide-no">100</div>
+<div class="slide-no">108</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="next-week">
+    <hgroup>
+      <h3>Next Week</h3>
+    </hgroup>
+    <article class="">
+      <p>Session 3:</p>
+<p>Lightning Talks:</p>
+<p>Paul Briant</p>
+<p>Deana Holmer</p>
+<p>Charles Robinson</p>
+
+
+
+<div class="slide-no">109</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id84">
+    <hgroup>
+      <h3>Next Week</h3>
+    </hgroup>
+    <article class="">
+      <p>Session 3:</p>
+<p>CGI, WSGI and Living Online</p>
+
+
+
+<div class="slide-no">110</div>
 
 
     </article>
