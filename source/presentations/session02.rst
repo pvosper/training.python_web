@@ -42,6 +42,7 @@ But First
 
   .. rst-class:: build
 
+  * Class website, schedule, readings
   * Review of last week
   * Everyone have what they need (working Python, google group, Slack?)
   * Questions on last week's material
@@ -157,6 +158,20 @@ Another way to write this:
            ....:		if n.startswith(prefix):
            ....:			results[n]=getattr(socket, n)
            ....:	return results
+
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+Virtual Environments
+
+  .. rst-class:: build
+
+  * What are they?
+  * When to use them?
+  * Quick Example
 
 
 .. nextslide::
