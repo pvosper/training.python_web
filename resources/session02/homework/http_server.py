@@ -34,6 +34,10 @@ Homework
     It is expecting that this function is going to return two objects,
 
     Look at the test to figure out what these objects should be.
+
+    python tests.py ResolveURITestCase.test_directory_resource
+
+    python tests.py ResponseOkTestCase.test_passed_mimetype_in_response
 """
 
 import socket
@@ -46,11 +50,13 @@ def response_ok(body=b"this is a pretty minimal response", mimetype=b"text/plain
     """returns a basic HTTP response"""
     resp = []
     resp.append(b"HTTP/1.1 200 OK")
-    resp.append(b"Content-Type: text/plain")
+    # resp.append(b"Content-Type: text/plain")
+    resp.append(b"Content-Type: " + mimetype)
     resp.append(b"")
-    resp.append(b"this is a pretty minimal response")
-    return b"\r\n".join(resp)
+    resp.append(body)
+    # resp.append(b"this is a pretty minimal response")
 
+    return b"\r\n".join(resp)
 
 def response_method_not_allowed():
     """returns a 405 Method Not Allowed response"""
@@ -64,7 +70,7 @@ def response_not_found():
     """returns a 404 Not Found response"""
     # return b""
     resp = []
-    resp.append("HTTP/1.1 404 Method Not found")
+    resp.append("HTTP/1.1 404 Not Found")
     resp.append("")
     return "\r\n".join(resp).encode('utf8')
 
@@ -76,11 +82,6 @@ def parse_request(request):
         raise NotImplementedError("We only accept GET")
     return uri
 
-# It is expecting that this function is going to return two objects,
-# Look at the test to figure out what these objects should be.
-# 1) Complete the stub resolve_uri function so that it handles looking up
-#   resources on disk using the URI returned by parse_request.
-# actual_body, actual_mimetype
 def resolve_uri(uri):
     """This method should return appropriate content and a mime type"""
     """Your resolve_uri function will need to accomplish the following tasks:
@@ -95,25 +96,25 @@ def resolve_uri(uri):
     If the URI does not map to a real location, it should raise an exception
         that the server can catch to return a 404 response.
     """
-    print("URI: {}".format(uri))
+    # print("URI: {}".format(uri))
     webroot = "/webroot"
     path = os.getcwd() + webroot + uri
-    mimetype = "text/plain"
-    if os.path.isfile(path):
-        print("os.path.isfile({})".format(path))
-        with open(path, "rb") as f:
-            print("Open f")
-            content = f.read()
-        mimetype = mimetypes.guess_type(path)[0]
-        print("mimetype: {}".format(mimetype))
-    if os.path.isdir(path):
-        print("os.path.isdir({})".format(path))
-        content = os.listdir(path)
-        content = ';'.join(content)
-        content = content.encode("utf-8")
-
+    # content = b"" # Adding this fails additional test
+    mimetype = b"text/plain"
+    try:
+        if os.path.isfile(path):
+            with open(path, "rb") as f:
+                content = f.read()
+            mimetype = mimetypes.guess_type(path)[0].encode('utf-8')
+        if os.path.isdir(path):
+            content = os.listdir(path)
+            content = ';'.join(content)
+            content = content.encode("utf-8")
+    except:
+        # raise NameError("File not found")
+        return response_not_found()
     # return b"still broken", b"text/plain"
-    return content, mimetype.encode('utf-8')
+    return content, mimetype
 
 
 def server(log_buffer=sys.stderr):
