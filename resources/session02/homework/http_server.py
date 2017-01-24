@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 """
+FAILED (failures=8, errors=4)
+FAILED (failures=10)
 Homework
     Take the following steps one at a time. Run the tests in
     assignments/session02/homework between to ensure that you are getting it
@@ -37,6 +39,7 @@ Homework
 import socket
 import sys
 import os
+import mimetypes
 
 
 def response_ok(body=b"this is a pretty minimal response", mimetype=b"text/plain"):
@@ -59,7 +62,11 @@ def response_method_not_allowed():
 
 def response_not_found():
     """returns a 404 Not Found response"""
-    return b""
+    # return b""
+    resp = []
+    resp.append("HTTP/1.1 404 Method Not found")
+    resp.append("")
+    return "\r\n".join(resp).encode('utf8')
 
 
 def parse_request(request):
@@ -88,16 +95,25 @@ def resolve_uri(uri):
     If the URI does not map to a real location, it should raise an exception
         that the server can catch to return a 404 response.
     """
-    content = b""
-    if uri[-1] == "/":
-        path  = os.getcwd() + '//webroot' + uri
+    print("URI: {}".format(uri))
+    webroot = "/webroot"
+    path = os.getcwd() + webroot + uri
+    mimetype = "text/plain"
+    if os.path.isfile(path):
+        print("os.path.isfile({})".format(path))
+        with open(path, "rb") as f:
+            print("Open f")
+            content = f.read()
+        mimetype = mimetypes.guess_type(path)[0]
+        print("mimetype: {}".format(mimetype))
+    if os.path.isdir(path):
+        print("os.path.isdir({})".format(path))
         content = os.listdir(path)
         content = ';'.join(content)
-            # .encode('utf-8')
-    # with open(filepath) as f:
-    #     content = f.readlines()
+        content = content.encode("utf-8")
+
     # return b"still broken", b"text/plain"
-    return content.encode('utf-8'), b"text/plain"
+    return content, mimetype.encode('utf-8')
 
 
 def server(log_buffer=sys.stderr):
